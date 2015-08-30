@@ -1,0 +1,6 @@
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider\bin\Debug\CommonProvider.xml
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider\bin\Debug\CommonProvider.dll
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider\bin\Debug\CommonProvider.pdb
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider\obj\Debug\CommonProvider.dll
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider\obj\Debug\CommonProvider.pdb
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider\obj\Debug\CommonProvider.csprojResolveAssemblyReference.cache

@@ -1,0 +1,4 @@
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider.Tests\bin\Release\CommonProvider.Tests.dll
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider.Tests\bin\Release\CommonProvider.Tests.pdb
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider.Tests\obj\Release\CommonProvider.Tests.dll
+C:\Users\sese\Documents\Visual Studio 2013\Projects\CommonProvider\CommonProvider.Tests\obj\Release\CommonProvider.Tests.pdb
