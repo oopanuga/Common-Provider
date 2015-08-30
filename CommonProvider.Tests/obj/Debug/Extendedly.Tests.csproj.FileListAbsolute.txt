@@ -1,4 +1,0 @@
-C:\Users\sese\Documents\Visual Studio 2013\Projects\Extendedly\Extendedly.Tests\bin\Debug\Extendedly.Tests.dll
-C:\Users\sese\Documents\Visual Studio 2013\Projects\Extendedly\Extendedly.Tests\bin\Debug\Extendedly.Tests.pdb
-C:\Users\sese\Documents\Visual Studio 2013\Projects\Extendedly\Extendedly.Tests\obj\Debug\Extendedly.Tests.dll
-C:\Users\sese\Documents\Visual Studio 2013\Projects\Extendedly\Extendedly.Tests\obj\Debug\Extendedly.Tests.pdb

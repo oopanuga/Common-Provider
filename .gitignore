@@ -1,2 +1,10 @@
 /.nuget
 /packages
+/CommonProvider.Example/obj
+/CommonProvider.Example/bin
+/CommonProvider.Tests/bin
+/CommonProvider.Tests/obj
+/CommonProvider/bin
+/CommonProvider/obj
+/CommonProvider.DependencyResolvers/obj
+/CommonProvider.DependencyResolvers/bin
