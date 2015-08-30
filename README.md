@@ -22,7 +22,7 @@ CommonProvider has several extension points but the key ones are,
 3. Custom data parsers for complex settings
 
 ### Installing CommonProvider
-You should install MediatR with NuGet:
+You should install CommonProvider with NuGet:
 
 ```
   Install-Package CommonProvider
