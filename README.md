@@ -6,9 +6,11 @@ your applications.
 ### Key Features
 Out of the box CommonProvider supports the following,
 
-1. Option to load providers and settings defined in a configuration file or load providers from a predefined directory.
-2. Integration to various IOC containers for dependency resolution e.g. Unity, AutoFac and Castle Windsor.
-3. Simple and complex (serialized objects) settings. It uses data parsers to load complex settings into complex types.
+1. Provider load options,
+    1. Load providers and settings defined in a configuration file.
+    2. Load providers from a predefined directory.
+2. Integration to various IOC containers for dependency resolution e.g. Unity, Castle etc.
+3. Simple and complex (serialized objects) settings. Uses data parsers to load complex settings into complex types.
 
 
 ### Key Extension Points
