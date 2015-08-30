@@ -14,8 +14,8 @@ namespace CommonProvider.Example.Providers
             stringBuilder.AppendLine(string.Format("Text: {0}", message.Text));
             stringBuilder.AppendLine(string.Format("From: {0}", message.Sender));
             stringBuilder.AppendLine(string.Format("To: {0}", message.PhoneNumbers));
-            stringBuilder.AppendLine(string.Format("Endpoint: {0}", this.Settings.Get<string>("endpoint")));
-            stringBuilder.AppendLine(string.Format("ApiKey: {0}", this.Settings.Get<string>("apikey")));
+            stringBuilder.AppendLine(string.Format("Endpoint: {0}", this.Settings.Get<string>("Endpoint")));
+            stringBuilder.AppendLine(string.Format("ApiKey: {0}", this.Settings.Get<string>("ApiKey")));
 
             Console.WriteLine(stringBuilder.ToString());
         }
