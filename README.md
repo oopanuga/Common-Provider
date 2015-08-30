@@ -1,6 +1,6 @@
 # CommonProvider
 
-CommonProvider is a simple library built to give you an easy and consistent way to access your providers (multiple implementations of a common interface AKA Provider Model or Strategy Pattern). Providers enables extensibility in
+CommonProvider is a simple library built to give you an easy and consistent way of accessing your providers (multiple implementations of a common interface AKA Provider Model or Strategy Pattern). Providers enables extensibility in
 your applications.
 
 ### Key Features
