@@ -18,7 +18,7 @@ Out of the box CommonProvider supports the following,
 CommonProvider has several extension points but the key ones are,
 
 1. Custom provider loaders for loading providers
-2. Integration to other IOC containers
+2. Custom dependency resolvers
 3. Custom data parsers for complex settings
 
 ### Installing CommonProvider
