@@ -11,6 +11,7 @@ Out of the box CommonProvider supports the following,
     2. Load providers from a predefined directory.
 2. Integration to various IOC containers for dependency resolution e.g. Unity, Castle etc.
 3. Simple and complex (serialized objects) settings. Uses data parsers to load complex settings into complex types.
+4. Various extension points.
 
 
 ### Key Extension Points
