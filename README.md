@@ -1,3 +1,26 @@
-## CommonProvider
+# CommonProvider
 
-CommonProvider is a simple library built to give you a consistent and easy way to access your providers (multiple implementations of a common interface AKA Strategy pattern). Its sometimes called the Provider pattern but I think thats just a glorified Strategy pattern. Out of the box it supports loading providers and settings defined in a configuration file and also loading providers from a predefined directory. You can also write your own custom Provider Loader
+CommonProvider is a simple library built to give you an easy and consistent way to access your providers (multiple implementations of a common interface AKA Provider Model or Strategy Pattern). Providers enables extensibility in
+your applications.
+
+### Key Features
+Out of the box CommonProvider supports the following,
+
+1. Option to load providers and settings defined in a configuration file or load providers from a predefined directory.
+2. Integration to various IOC containers for dependency resolution e.g. Unity, AutoFac and Castle Windsor.
+3. Simple and complex (serialized objects) settings. It uses data parsers to load complex settings into complex types.
+
+
+### Key Extension Points
+CommonProvider has several extension points but the key ones are,
+
+1. Custom provider loaders for loading providers
+2. Integration to other IOC containers
+3. Custom data parsers for complex settings
+
+### Installing CommonProvider
+You should install MediatR with NuGet:
+
+```
+  Install-Package CommonProvider
+```
