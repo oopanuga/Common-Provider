@@ -9,3 +9,9 @@
 /CommonProvider.DependencyResolvers/obj
 /CommonProvider.DependencyResolvers/bin
 /CommonProvider.v12.suo
+/DependencyResolvers/CommonProvider.Autofac/obj
+/DependencyResolvers/CommonProvider.Autofac/bin
+/DependencyResolvers/CommonProvider.Castle/obj
+/DependencyResolvers/CommonProvider.Castle/bin
+/DependencyResolvers/CommonProvider.Unity/obj
+/DependencyResolvers/CommonProvider.Unity/bin
