@@ -13,7 +13,6 @@ Some key features of CommonProvider are,
 3. Support for Provider settings with the config provider load option. Settings could be simple or complex (serialized objects).
 4. Various extension points.
 
-
 ### Key Extension Points
 CommonProvider has various extension points but the key ones are,
 
@@ -21,9 +20,27 @@ CommonProvider has various extension points but the key ones are,
 2. Create custom dependency resolvers
 3. Create custom data parsers for dealing with complex settings
 
-### Installing CommonProvider
-You should install CommonProvider with NuGet:
+### Using CommonProvider
+Examples on how to use this can be found in the solution [here](https://github.com/commonprovider/common-provider/tree/master/Examples)
 
+### Installing CommonProvider Nuget Packages
+
+[CommonProvider Nuget](https://www.nuget.org/packages/CommonProvider/)
 ```
-  Install-Package CommonProvider
+PM> Install-Package CommonProvider
+```
+
+[CommonProvider.Unity Nuget](https://www.nuget.org/packages/CommonProvider.Unity/)
+```
+PM> Install-Package CommonProvider.Unity
+```
+
+[CommonProvider.Autofac Nuget](https://www.nuget.org/packages/CommonProvider.Autofac/)
+```
+PM> Install-Package CommonProvider.Autofac
+```
+
+[CommonProvider.Castle Nuget](https://www.nuget.org/packages/CommonProvider.Castle/)
+```
+PM> Install-Package CommonProvider.Castle
 ```
