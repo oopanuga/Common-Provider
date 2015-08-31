@@ -68,13 +68,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonProvider.DependencyResolvers\CommonProvider.DependencyResolvers.csproj">
-      <Project>{cba4e637-2a8f-4cc3-a23e-4e1854e5cc37}</Project>
-      <Name>CommonProvider.DependencyResolvers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CommonProvider\CommonProvider.csproj">
       <Project>{a1387b8d-1c93-42ef-bf76-1e34a97ab5f3}</Project>
       <Name>CommonProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DependencyResolvers\CommonProvider.Unity\CommonProvider.Unity.csproj">
+      <Project>{cc4a02a5-c575-446d-91f0-7861483d826f}</Project>
+      <Name>CommonProvider.Unity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

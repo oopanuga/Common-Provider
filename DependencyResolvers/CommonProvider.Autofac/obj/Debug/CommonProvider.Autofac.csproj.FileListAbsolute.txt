@@ -1,0 +1,10 @@
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\bin\Debug\CommonProvider.Autofac.dll
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\bin\Debug\CommonProvider.Autofac.pdb
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\bin\Debug\Autofac.dll
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\bin\Debug\CommonProvider.dll
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\bin\Debug\CommonProvider.pdb
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\bin\Debug\CommonProvider.xml
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\bin\Debug\Autofac.xml
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\obj\Debug\CommonProvider.Autofac.csprojResolveAssemblyReference.cache
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\obj\Debug\CommonProvider.Autofac.dll
+C:\Users\sese\Documents\development\CommonProvider\DependencyResolvers\CommonProvider.Autofac\obj\Debug\CommonProvider.Autofac.pdb

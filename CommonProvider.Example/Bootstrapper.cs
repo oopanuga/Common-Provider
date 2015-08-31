@@ -1,8 +1,8 @@
 ﻿using CommonProvider.Configuration;
 using CommonProvider.DependencyManagement;
-using CommonProvider.DependencyResolvers;
 using CommonProvider.Factories;
 using CommonProvider.ProviderLoaders;
+using CommonProvider.Unity;
 using Microsoft.Practices.Unity;
 
 namespace CommonProvider.Example
