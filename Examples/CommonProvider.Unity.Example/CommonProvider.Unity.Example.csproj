@@ -70,7 +70,7 @@
       <Project>{cc4a02a5-c575-446d-91f0-7861483d826f}</Project>
       <Name>CommonProvider.Unity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CommonProvider.Example.Common\CommonProvider.Example.Shared.csproj">
+    <ProjectReference Include="..\CommonProvider.Example.Shared\CommonProvider.Example.Shared.csproj">
       <Project>{2e5285d4-766c-4a33-ae5d-5bb9eb636643}</Project>
       <Name>CommonProvider.Example.Shared</Name>
     </ProjectReference>
