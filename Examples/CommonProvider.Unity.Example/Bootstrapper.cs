@@ -2,10 +2,9 @@
 using CommonProvider.DependencyManagement;
 using CommonProvider.Factories;
 using CommonProvider.ProviderLoaders;
-using CommonProvider.Unity;
 using Microsoft.Practices.Unity;
 
-namespace CommonProvider.Example
+namespace CommonProvider.Unity.Example
 {
     public static class Bootstrapper
     {
@@ -18,11 +17,9 @@ namespace CommonProvider.Example
 
                 _unityContainer = new UnityContainer();
                 _unityContainer.RegisterType<IProviderConfigurationManager, ProviderConfigurationManager>();
-                _unityContainer.RegisterType<ProviderLoaderBase, ConfigProviderLoader>(new InjectionConstructor(
-                    _unityContainer.Resolve<IProviderConfigurationManager>()));
+                _unityContainer.RegisterType<ProviderLoaderBase, ConfigProviderLoader>();
                 _unityContainer.RegisterType<IProvidersFactory, ProvidersFactory>(new InjectionConstructor());
-                _unityContainer.RegisterType<IProviderManager, ProviderManager>(new InjectionConstructor(
-                    _unityContainer.Resolve<ProviderLoaderBase>(), _unityContainer.Resolve<IProvidersFactory>()));
+                _unityContainer.RegisterType<IProviderManager, ProviderManager>();
                 DependencyResolverService.SetResolver(new UnityDependencyResolver(_unityContainer));
 
                 return _unityContainer;

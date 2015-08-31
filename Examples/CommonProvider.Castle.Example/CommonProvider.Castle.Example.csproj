@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7EB477D3-A1AB-4BC6-A053-A380A7B7859A}</ProjectGuid>
+    <ProjectGuid>{8C7D0B93-356F-48DF-A2C6-282ECA65170B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CommonProvider.Example</RootNamespace>
-    <AssemblyName>CommonProvider.Example</AssemblyName>
+    <RootNamespace>CommonProvider.Castle.Example</RootNamespace>
+    <AssemblyName>CommonProvider.Castle.Example</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,15 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration">
-      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
-      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,10 +50,6 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Message.cs" />
-    <Compile Include="Providers\ISmsProvider.cs" />
-    <Compile Include="Providers\NexmoSmsProvider.cs" />
-    <Compile Include="Providers\TwilioSmsProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -68,13 +58,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonProvider\CommonProvider.csproj">
+    <ProjectReference Include="..\..\CommonProvider\CommonProvider.csproj">
       <Project>{a1387b8d-1c93-42ef-bf76-1e34a97ab5f3}</Project>
       <Name>CommonProvider</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DependencyResolvers\CommonProvider.Unity\CommonProvider.Unity.csproj">
-      <Project>{cc4a02a5-c575-446d-91f0-7861483d826f}</Project>
-      <Name>CommonProvider.Unity</Name>
+    <ProjectReference Include="..\..\DependencyResolvers\CommonProvider.Castle\CommonProvider.Castle.csproj">
+      <Project>{b03991ab-24db-4802-bd03-e7d581d4ae20}</Project>
+      <Name>CommonProvider.Castle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonProvider.Example.Common\CommonProvider.Example.Shared.csproj">
+      <Project>{2e5285d4-766c-4a33-ae5d-5bb9eb636643}</Project>
+      <Name>CommonProvider.Example.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

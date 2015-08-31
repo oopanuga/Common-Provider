@@ -1,5 +1,5 @@
 ﻿
-namespace CommonProvider.Example
+namespace CommonProvider.Example.Shared
 {
     public class Message
     {
