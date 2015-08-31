@@ -4,22 +4,22 @@ CommonProvider is a simple library built to give you an easy and consistent way 
 your applications.
 
 ### Key Features
-Out of the box CommonProvider supports the following,
+Some key features of CommonProvider are,
 
-1. Provider load options,
-    1. Load providers and settings defined in a configuration file.
-    2. Load providers from a predefined directory.
-2. Integration to various IOC containers for dependency resolution e.g. Unity, Castle etc.
-3. Simple and complex (serialized objects) settings. Uses data parsers to load complex settings into complex types.
+1. Different provider load options,
+    1. Load providers and settings based on definitions in a config file.
+    2. Load providers from a file directory.
+2. Dependency resolution via IOC containers e.g. Unity, Castle etc.
+3. Support for Provider settings with the config provider load option. Settings could be simple or complex (serialized objects).
 4. Various extension points.
 
 
 ### Key Extension Points
-CommonProvider has several extension points but the key ones are,
+CommonProvider has various extension points but the key ones are,
 
-1. Custom provider loaders for loading providers
-2. Custom dependency resolvers
-3. Custom data parsers for complex settings
+1. Create custom provider loaders
+2. Create custom dependency resolvers
+3. Create custom data parsers for dealing with complex settings
 
 ### Installing CommonProvider
 You should install CommonProvider with NuGet:
