@@ -1,6 +1,6 @@
 # CommonProvider
 
-CommonProvider is a simple library built to give you an easy and consistent way of accessing your providers (from the Provder model/pattern) or strategies (from the Strategy pattern). These really similar patterns promote loosely coupling and enable extensibility in your applications.
+CommonProvider is a simple library built to give you an easy and consistent way of accessing your providers (from the Provder model/pattern) or strategies (from the Strategy pattern). These really similar patterns promote loose coupling and enable extensibility in your applications.
 
 ### Key Features
 Some key features of CommonProvider are,
@@ -11,7 +11,7 @@ Some key features of CommonProvider are,
     2. Load providers from a file directory.
 3. Dependency resolution via IOC containers e.g. Unity, Castle etc.
 4. Support for Provider settings with the config provider load option. Settings could be simple or complex (serialized objects).
-5. Write custom data parsers for dealing with custom settings
+5. Uses data parsers to parse/deserialize custom settings
 6. Various extension points.
 
 ### Key Extension Points
