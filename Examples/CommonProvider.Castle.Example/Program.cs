@@ -1,8 +1,8 @@
-﻿using CommonProvider.Example.Providers;
-using Microsoft.Practices.Unity;
+﻿using CommonProvider.Example.Shared;
+using CommonProvider.Example.Shared.Providers;
 using System;
 
-namespace CommonProvider.Example
+namespace CommonProvider.Castle.Example
 {
     class Program
     {
@@ -13,15 +13,15 @@ namespace CommonProvider.Example
 
         private static void SendSms()
         {
-            var providerManager = Bootstrapper.UnityContainer.Resolve<IProviderManager>();
+            var providerManager = Bootstrapper.CastleContainer.Resolve<IProviderManager>();
             var smsProviders = providerManager.Providers.All<ISmsProvider>();
 
             var message = providerManager.Settings.Get<Message>("Message");
 
             foreach (ISmsProvider smsProvider in smsProviders)
             {
-                smsProvider.SendSms(message);
-
+                var result = smsProvider.SendSms(message);
+                Console.WriteLine(result);
                 Console.WriteLine();
             }
 

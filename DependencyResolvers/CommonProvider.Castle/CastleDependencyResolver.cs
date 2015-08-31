@@ -34,7 +34,7 @@ namespace CommonProvider.Castle
         /// <returns>An instance of the type.</returns>
         public T Resolve<T>()
         {
-            return (T)_container.Resolve(typeof(T));
+            return _container.Resolve<T>();
         }
 
         /// <summary>

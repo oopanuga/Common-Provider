@@ -1,12 +1,11 @@
 ﻿using CommonProvider.Data;
-using System;
 using System.Text;
 
-namespace CommonProvider.Example.Providers
+namespace CommonProvider.Example.Shared.Providers
 {
     public class NexmoSmsProvider : ISmsProvider
     {
-        public void SendSms(Message message)
+        public string SendSms(Message message)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -17,7 +16,7 @@ namespace CommonProvider.Example.Providers
             stringBuilder.AppendLine(string.Format("Endpoint: {0}", this.Settings.Get<string>("Endpoint")));
             stringBuilder.AppendLine(string.Format("ApiKey: {0}", this.Settings.Get<string>("ApiKey")));
 
-            Console.WriteLine(stringBuilder.ToString());
+            return stringBuilder.ToString();
         }
 
         public string Name { get; set; }

@@ -36,7 +36,7 @@ namespace CommonProvider.Unity
         {
             try
             {
-                return (T)_container.Resolve(typeof(T));
+                return _container.Resolve<T>();
             }
             catch (ResolutionFailedException)
             {
