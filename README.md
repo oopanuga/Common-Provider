@@ -11,7 +11,7 @@ Some key features of CommonProvider are,
     2. Load providers from a file directory.
 3. Dependency resolution via IOC containers e.g. Unity, Castle etc.
 4. Support for Provider settings with the config provider load option. Settings could be simple or complex (serialized objects).
-5. Uses data parsers to parse/deserialize custom settings
+5. Uses data parsers to parse/deserialize complex settings
 6. Various extension points.
 
 ### Key Extension Points
