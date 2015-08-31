@@ -5,12 +5,13 @@ CommonProvider is a simple library built to give you an easy and consistent way 
 ### Key Features
 Some key features of CommonProvider are,
 
-1. Different provider load options,
+1. Simple and consistent way of accessing providers
+2. Different provider load options,
     1. Load providers and settings based on definitions in a config file.
     2. Load providers from a file directory.
-2. Dependency resolution via IOC containers e.g. Unity, Castle etc.
-3. Support for Provider settings with the config provider load option. Settings could be simple or complex (serialized objects).
-4. Various extension points.
+3. Dependency resolution via IOC containers e.g. Unity, Castle etc.
+4. Support for Provider settings with the config provider load option. Settings could be simple or complex (serialized objects).
+5. Various extension points.
 
 ### Key Extension Points
 CommonProvider has various extension points but the key ones are,
