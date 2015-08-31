@@ -2,7 +2,7 @@
 using CommonProvider.DependencyManagement;
 using System;
 
-namespace CommonProvider.DependencyResolvers
+namespace CommonProvider.Autofac
 {
     /// <summary>
     /// Represents an implementation of a dependency resolver that 

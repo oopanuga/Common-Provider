@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CommonProvider.DependencyResolvers")]
+[assembly: AssemblyTitle("CommonProvider.Autofac")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CommonProvider.DependencyResolvers")]
+[assembly: AssemblyProduct("CommonProvider.Autofac")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("da115ab2-bdd1-445b-8103-07f54ff4533d")]
+[assembly: Guid("a2afdc48-62da-425b-85a1-35afb2fc47c1")]
 
 // Version information for an assembly consists of the following four values:
 //

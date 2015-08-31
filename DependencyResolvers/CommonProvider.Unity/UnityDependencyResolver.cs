@@ -2,7 +2,7 @@
 using Microsoft.Practices.Unity;
 using System;
 
-namespace CommonProvider.DependencyResolvers
+namespace CommonProvider.Unity
 {
     /// <summary>
     /// Represents an implementation of a dependency resolver that 
