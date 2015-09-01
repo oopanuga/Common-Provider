@@ -7,17 +7,17 @@ namespace CommonProvider
     public interface IProvider
     {
         /// <summary>
-        /// Gets a provider's name.
+        /// Gets or sets a provider's name.
         /// </summary>
         string Name { get; set; }
 
         /// <summary>
-        /// Gets a provider's settings.
+        /// Gets or sets a provider's settings.
         /// </summary>
         ISettings Settings { get; set; }
 
         /// <summary>
-        /// Gets a provider's group.
+        /// Gets or sets a provider's group.
         /// </summary>
         string Group { get; set; }
     }
