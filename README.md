@@ -18,7 +18,7 @@ Some key features of CommonProvider are,
 CommonProvider has various extension points but the key ones are,
 
 1. Write custom provider loaders
-2. Write custom dependency resolvers
+2. Write custom dependency resolvers 
 3. Write custom data parsers for dealing with complex settings
 
 ### Using CommonProvider
