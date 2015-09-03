@@ -24,24 +24,8 @@ CommonProvider has various extension points but the key ones are,
 ### Using CommonProvider
 Examples on how to use this can be found in the solution [here](https://github.com/commonprovider/common-provider/tree/master/Examples)
 
-### Installing CommonProvider Nuget Packages
+### Installing CommonProvider [Nuget Package](https://www.nuget.org/packages/CommonProvider/)
 
-[CommonProvider Nuget](https://www.nuget.org/packages/CommonProvider/)
 ```
 PM> Install-Package CommonProvider
-```
-
-[CommonProvider.Unity Nuget](https://www.nuget.org/packages/CommonProvider.Unity/)
-```
-PM> Install-Package CommonProvider.Unity
-```
-
-[CommonProvider.Autofac Nuget](https://www.nuget.org/packages/CommonProvider.Autofac/)
-```
-PM> Install-Package CommonProvider.Autofac
-```
-
-[CommonProvider.Castle Nuget](https://www.nuget.org/packages/CommonProvider.Castle/)
-```
-PM> Install-Package CommonProvider.Castle
 ```
