@@ -3,6 +3,7 @@ using CommonProvider.DependencyManagement;
 using CommonProvider.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CommonProvider.Data
 {
@@ -47,11 +48,46 @@ namespace CommonProvider.Data
             {
                 return _settings.Count;
             }
-        } 
+        }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Gets a value indicating if a setting name exists or not. It also 
+        /// returns the setting as an out parameter if it exists.
+        /// </summary>
+        /// <typeparam name="T">The generic type of the setting.</typeparam>
+        /// <param name="settingName">The name of the setting.</param>
+        /// <param name="setting">The setting with the specified name of 
+        /// the specified generic type.</param>
+        /// <returns>A value indicating if a setting name exists or not.</returns>
+        public bool TryGet<T>(string settingName, out T setting)
+        {
+            var isContainsSettingName = Contains(settingName);
+
+            if (isContainsSettingName)
+            {
+                setting = Get<T>(settingName);
+            }
+            else
+            {
+                setting = default(T);
+            }
+
+            return isContainsSettingName;
+        }
+
+        /// <summary>
+        /// Gets a value indicating if a setting name exists or not.
+        /// </summary>
+        /// <param name="settingName">The name of the setting.</param>
+        /// <returns>The value indicating if setting exists or not.</returns>
+        public bool Contains(string settingName)
+        {
+            return _settings.Keys.Contains(settingName);
+        }
 
         /// <summary>
         /// Gets a setting with the specified name and of the specified generic type.
@@ -63,7 +99,12 @@ namespace CommonProvider.Data
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                return default(T);
+                throw new ArgumentException("setting name not set");
+            }
+
+            if (!Contains(settingName))
+            {
+                throw new ArgumentException("setting name does not exist");
             }
 
             Type type = typeof(T);

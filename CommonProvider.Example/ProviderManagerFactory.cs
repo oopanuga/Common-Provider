@@ -10,8 +10,7 @@ namespace CommonProvider.Example
         {
             var providerManager =
                 new ProviderManager(
-                    new ConfigProviderLoader(new ProviderConfigurationManager()),
-                    new ProvidersFactory()
+                    new ConfigProviderLoader(new ProviderConfigurationManager())
                     );
 
             return providerManager;

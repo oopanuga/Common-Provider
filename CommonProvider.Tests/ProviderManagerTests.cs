@@ -1,6 +1,7 @@
 ﻿using CommonProvider.Data;
 using CommonProvider.Factories;
 using CommonProvider.ProviderLoaders;
+using CommonProvider.Tests.TestClasses;
 using NUnit.Framework;
 using Rhino.Mocks;
 using System;
@@ -77,6 +78,38 @@ namespace CommonProvider.Tests
                 IProvidersFactory providersFactory = null;
 
                 var providerManager = new ProviderManager(providerLoader, providersFactory);
+            }
+
+            [Test]
+            public void Should_load_providers_using_the_default_providers_fatcory_when_only_provider_loaders_is_specified()
+            {
+                var providerDesccriptors = new List<IProviderDescriptor>();
+
+                var settings = MockRepository.GenerateMock<ISettings>();
+                var fooProviderName = "Foo Provider";
+                var fooProviderGroup = "FooProviders";
+                var fooProviderType = typeof(FooProvider);
+                var isFooProviderEnabled = true;
+
+                providerDesccriptors.Add(new ProviderDescriptor(
+                        fooProviderName,
+                        fooProviderGroup,
+                        fooProviderType,
+                        settings,
+                        isFooProviderEnabled
+                        ));
+
+                var providerData = MockRepository.GenerateMock<IProviderData>();
+                providerData.Stub(x => x.ProviderDescriptors).Return(providerDesccriptors);
+                providerData.Stub(x => x.Settings).Return(settings);
+
+                var providerLoader = MockRepository.GenerateMock<ProviderLoaderBase>();
+                providerLoader.Stub(x => x.Load()).Return(providerData);
+
+                var providerManager = new ProviderManager(providerLoader);
+
+                Assert.That(providerManager.Providers, Is.Not.Null);
+                Assert.That(providerManager.Settings, Is.Not.Null);
             }
         }
     }

@@ -40,6 +40,16 @@ namespace CommonProvider
             Settings = providerData.Settings;
         }
 
+        /// <summary>
+        /// Initializes an instance of ProviderManager using the specified provider loader. It internally uses the default providers factory to create the provider list.
+        /// </summary>
+        /// <param name="providerLoader">The provider loader to use in loading the providers.</param>
+        public ProviderManager(ProviderLoaderBase providerLoader)
+            : this(providerLoader, new ProvidersFactory())
+        {
+
+        }
+
         #endregion
 
         #region Properties

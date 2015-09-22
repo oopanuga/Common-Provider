@@ -8,6 +8,24 @@ namespace CommonProvider.Data
     public interface ISettings
     {
         /// <summary>
+        /// Gets a value indicating if a setting name exists or not.
+        /// </summary>
+        /// <param name="settingName">The name of the setting.</param>
+        /// <returns>A value indicating if a setting name exists or not.</returns>
+        bool Contains(string settingName);
+
+        /// <summary>
+        /// Gets a value indicating if a setting name exists or not. It also 
+        /// returns the setting as an out parameter if it exists.
+        /// </summary>
+        /// <typeparam name="T">The generic type of the setting.</typeparam>
+        /// <param name="settingName">The name of the setting.</param>
+        /// <param name="setting">The setting with the specified name of 
+        /// the specified generic type.</param>
+        /// <returns>A value indicating if a setting name exists or not.</returns>
+        bool TryGet<T>(string settingName, out T setting);
+
+        /// <summary>
         /// Gets a setting with the specified name and of the specified generic type.
         /// </summary>
         /// <typeparam name="T">The generic type return.</typeparam>
