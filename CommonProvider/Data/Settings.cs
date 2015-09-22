@@ -55,8 +55,10 @@ namespace CommonProvider.Data
         #region Methods
 
         /// <summary>
-        /// Gets a value indicating if a setting name exists or not. It also 
-        /// returns the setting as an out parameter if it exists.
+        /// Attempts to get a setting with the specified name and of the specified 
+        /// generic type. The setting is returned as an out parameter if the
+        /// setting name exists otherwise the default value of the specified 
+        /// type is returned.
         /// </summary>
         /// <typeparam name="T">The generic type of the setting.</typeparam>
         /// <param name="settingName">The name of the setting.</param>
