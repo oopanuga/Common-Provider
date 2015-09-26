@@ -73,7 +73,7 @@ namespace CommonProvider.ProviderLoaders
 
             foreach (ProviderElement providerElement in configSection.Providers)
             {
-                if (!providerElement.IsEnabled) break;
+                if (!providerElement.IsEnabled) continue;
 
                 // get provider type
                 Type providerType = GetProviderType(configSection, providerElement);
