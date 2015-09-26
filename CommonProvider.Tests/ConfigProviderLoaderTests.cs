@@ -114,7 +114,7 @@ namespace CommonProvider.Tests
                 {
                     Name = "Foo",
                     Group = "FooGroup",
-                    IsEnabled = true,
+                    IsEnabled = false,
                     Type = "FooProvider",
                 };
                 fooProvider.Settings.Add(providerSettingElement);
@@ -124,9 +124,10 @@ namespace CommonProvider.Tests
                 {
                     Name = "Bar",
                     Group = "BarGroup",
-                    IsEnabled = false,
+                    IsEnabled = true,
                     Type = "BarProvider",
                 };
+
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
@@ -138,6 +139,7 @@ namespace CommonProvider.Tests
 
                 Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
                 Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(1));
+                Assert.That(providerData.ProviderDescriptors.First().ProviderName, Is.EqualTo("Bar"));
                 Assert.That(providerData.Settings.Count, Is.EqualTo(1));
                 Assert.That(providerData.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(1));
             }
