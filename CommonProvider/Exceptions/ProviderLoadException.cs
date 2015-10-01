@@ -11,7 +11,6 @@ namespace CommonProvider.Exceptions
         /// Initializes a new instance of the ProviderLoadException class.
         /// </summary>
         public ProviderLoadException()
-            : base()
         {
         }
 

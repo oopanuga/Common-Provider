@@ -47,7 +47,7 @@ namespace CommonProvider.ProviderLoaders
         /// <returns>The loaded providers data.</returns>
         protected override IProviderData PerformLoad()
         {
-            string[] dllFileNames = null;
+            string[] dllFileNames;
             var providerDescriptors = new List<ProviderDescriptor>();
 
 
@@ -67,7 +67,7 @@ namespace CommonProvider.ProviderLoaders
             {
                 if (assembly != null)
                 {
-                    Type[] types = null;
+                    Type[] types;
 
                     try
                     {
@@ -81,15 +81,11 @@ namespace CommonProvider.ProviderLoaders
                     foreach (Type type in types)
                     {
                         if (type.IsInterface || type.IsAbstract)
-                        {
                             continue;
-                        }
-                        else
+
+                        if (type.GetInterface(providerType.FullName) != null)
                         {
-                            if (type.GetInterface(providerType.FullName) != null)
-                            {
-                                providerTypes.Add(type);
-                            }
+                            providerTypes.Add(type);
                         }
                     }
                 }

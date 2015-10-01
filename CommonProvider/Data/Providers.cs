@@ -14,8 +14,8 @@ namespace CommonProvider.Data
     {
         #region Fields
 
-        IEnumerable<IProviderDescriptor> _providerDescriptors;
-        ProviderFactoryBase _providerFactory;
+        readonly IEnumerable<IProviderDescriptor> _providerDescriptors;
+        readonly ProviderFactoryBase _providerFactory;
 
         #endregion
 
@@ -106,7 +106,7 @@ namespace CommonProvider.Data
         {
             get
             {
-                return this.All<IProvider>().Count();
+                return All<IProvider>().Count();
             }
         }
 
@@ -137,7 +137,7 @@ namespace CommonProvider.Data
         /// <returns>The providers.</returns>
         public IEnumerable<IProvider> All()
         {
-            return this.All<IProvider>();
+            return All<IProvider>();
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace CommonProvider.Data
         /// <returns>The matching providers.</returns>
         public IEnumerable<IProvider> ByGroup(string groupName)
         {
-            var providers = this.All<IProvider>()
+            var providers = All<IProvider>()
                 .Where(x => 
                     x.Group.Equals(groupName, 
                     StringComparison.OrdinalIgnoreCase));
@@ -163,7 +163,7 @@ namespace CommonProvider.Data
         /// <returns>The matching providers.</returns>
         public IEnumerable<T> ByGroup<T>(string groupName) where T : IProvider
         {
-            var providers = this.All<T>()
+            var providers = All<T>()
                 .Where(x => 
                 x.Group.Equals(groupName, 
                 StringComparison.OrdinalIgnoreCase));
@@ -190,7 +190,7 @@ namespace CommonProvider.Data
         /// <returns>The matching provider.</returns>
         public IProvider ByName(string providerName)
         {
-            return this.GetByName<IProvider>(providerName);
+            return GetByName<IProvider>(providerName);
         }
 
         #endregion

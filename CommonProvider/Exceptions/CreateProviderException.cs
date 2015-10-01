@@ -11,7 +11,6 @@ namespace CommonProvider.Exceptions
         /// Initializes a new instance of the CreateProviderException class.
         /// </summary>
         public CreateProviderException()
-            : base()
         {
         }
 

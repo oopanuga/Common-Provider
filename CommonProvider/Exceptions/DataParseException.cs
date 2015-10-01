@@ -10,7 +10,7 @@ namespace CommonProvider.Exceptions
         /// <summary>
         /// Initializes a new instance of the DataParseException class.
         /// </summary>
-        public DataParseException():base()
+        public DataParseException()
         {
         }
 

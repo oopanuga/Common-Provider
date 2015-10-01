@@ -21,7 +21,8 @@ namespace CommonProvider.Helpers
         internal static object Invoke(object obj, string methodName, 
             Type genericType, object[] parameters, BindingFlags? bindingFlags = null)
         {
-            MethodInfo method = null;
+            MethodInfo method;
+
             if(bindingFlags == null)
             {
                 method = obj.GetType().GetMethod(methodName);

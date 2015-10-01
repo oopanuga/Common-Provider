@@ -42,11 +42,6 @@ namespace CommonProvider.Factories
                         string.Format("{0} should inherit from IProvider", type.Name));
                 }
 
-                if (providerDescriptor == null)
-                {
-                    throw new ArgumentException("providerDescriptor not set");
-                }
-
                 if (!type.IsAssignableFrom(providerDescriptor.ProviderType))
                 {
                     throw new CreateProviderException(
@@ -81,7 +76,7 @@ namespace CommonProvider.Factories
                 provider.Name = providerDescriptor.ProviderName;
                 provider.Settings = providerDescriptor.ProviderSettings;
 
-                return (T)(object)instance;
+                return (T)instance;
             }
             catch (Exception ex)
             {

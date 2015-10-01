@@ -20,11 +20,9 @@ namespace CommonProvider.Data
         public ProviderData(
             IEnumerable<IProviderDescriptor> providerDescriptors, ISettings settings)
         {
-            if (providerDescriptors == null || 
-                !providerDescriptors.Any())
+            if (providerDescriptors == null || !providerDescriptors.Any())
             {
-                throw new ArgumentException(
-                    "providerDescriptors not set");
+                throw new ArgumentException("providerDescriptors not set");
             }
 
             Settings = settings;

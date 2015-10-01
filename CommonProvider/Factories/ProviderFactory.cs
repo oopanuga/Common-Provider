@@ -17,8 +17,6 @@ namespace CommonProvider.Factories
             // use default dependency resolver if not set
             var dependencyResolver = DependencyResolverService.GetResolver();
 
-            var type = typeof(T);
-
             return dependencyResolver.Resolve<T>();
         }
     }

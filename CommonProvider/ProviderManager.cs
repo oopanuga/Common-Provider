@@ -32,7 +32,7 @@ namespace CommonProvider
 
             if (providersFactory == null)
             {
-                throw new ArgumentNullException("providerListFactory");
+                throw new ArgumentNullException("providersFactory");
             }
 
             var providerData = providerLoader.Load();

@@ -12,8 +12,8 @@ namespace CommonProvider.Data
     /// </summary>
     public class Settings : ISettings
     {
-        Dictionary<string, string> _settings;
-        string _dataParserType;
+        readonly Dictionary<string, string> _settings;
+        readonly string _dataParserType;
 
         #region Constructors
 
