@@ -22,7 +22,7 @@ CommonProvider has various extension points but the key ones are,
 3. Write custom data parsers for dealing with complex settings.
 
 ### Using CommonProvider
-Examples on how to use this can be found in the solution [here](https://github.com/commonprovider/common-provider/tree/master/CommonProvider.Example)
+Examples on how to use this can be found in the solution [here](https://github.com/commonprovider/common-provider/tree/master/CommonProvider.Example).
 
 ### Installing CommonProvider [Nuget Package](https://www.nuget.org/packages/CommonProvider/)
 
