@@ -14,7 +14,7 @@ namespace CommonProvider.ProviderLoaders
     public class ConfigProviderLoader : ProviderLoaderBase
     {
         private readonly IProviderConfigurationManager _providerConfigurationManager;
-        private const string _sectionName = "commonProvider";
+        private const string SectionName = "commonProvider";
 
         /// <summary>
         /// Initializes an instance of ConfigProviderLoader using the specified
@@ -34,16 +34,14 @@ namespace CommonProvider.ProviderLoaders
         protected override IProviderData PerformLoad()
         {
             var configSection = 
-                _providerConfigurationManager.GetSection(_sectionName);
+                _providerConfigurationManager.GetSection(SectionName);
  
             if (configSection == null)
             {
                 throw new ConfigurationErrorsException(
                     string.Format("Config section {0} not defined", 
-                    _sectionName));
+                    SectionName));
             }
-
-            var providers = new Dictionary<string, IProvider>();
 
             var providerDescriptors = new List<IProviderDescriptor>();
 
