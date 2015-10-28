@@ -1,8 +1,8 @@
 ﻿using System;
-using CommonProvider.Example.Lib;
-using CommonProvider.Example.Lib.Providers;
+using CommonProvider.Example.SimpleProvider.Lib;
+using CommonProvider.Example.SimpleProvider.Lib.Providers;
 
-namespace CommonProvider.Example
+namespace CommonProvider.Example.SimpleProvider
 {
     class Program
     {
@@ -16,7 +16,6 @@ namespace CommonProvider.Example
             var providerManager = SimpleProviderManagerFactory.Create();
             var smsProviders = providerManager.Providers.All<ISmsProvider>();
 
-            //sender:007|text:Hello World!!!|phoneNumbers:1010101010,2020202020,3030303030
             var message = new Message()
             {
                 Sender = "007",
