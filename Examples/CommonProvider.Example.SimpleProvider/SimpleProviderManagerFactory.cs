@@ -1,7 +1,7 @@
 ﻿using CommonProvider.ProviderLoaders;
 using System;
 
-namespace CommonProvider.Example
+namespace CommonProvider.Example.SimpleProvider
 {
     public static class SimpleProviderManagerFactory
     {
