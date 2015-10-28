@@ -45,11 +45,19 @@
   <ItemGroup>
     <Compile Include="Configuration\IProviderConfigurationManager.cs" />
     <Compile Include="Configuration\ProviderConfigurationManager.cs" />
+    <Compile Include="Data\ISimpleProviders.cs" />
+    <Compile Include="Data\SimpleProviders.cs" />
+    <Compile Include="Factories\ISimpleProvidersFactory.cs" />
+    <Compile Include="Factories\SimpleProviderFactory.cs" />
+    <Compile Include="Factories\SimpleProviderFactoryBase.cs" />
+    <Compile Include="Factories\SimpleProvidersFactory.cs" />
     <Compile Include="Helpers\GenericMethodInvoker.cs" />
     <Compile Include="Exceptions\DataParseException.cs" />
     <Compile Include="Exceptions\CreateProviderException.cs" />
     <Compile Include="Exceptions\ProviderLoadException.cs" />
     <Compile Include="Data\Parsers\PipedDataParser.cs" />
+    <Compile Include="ISimpleProvider.cs" />
+    <Compile Include="ISimpleProviderManager.cs" />
     <Compile Include="ProviderLoaders\ConfigProviderLoader.cs" />
     <Compile Include="ProviderLoaders\DirectoryProviderLoader.cs">
       <SubType>Code</SubType>
@@ -76,6 +84,7 @@
     <Compile Include="DependencyManagement\IDependencyResolver.cs" />
     <Compile Include="DependencyManagement\DependencyResolverService.cs" />
     <Compile Include="IProviderManager.cs" />
+    <Compile Include="ProviderLoaders\SimpleProviderLoaderBase.cs" />
     <Compile Include="ProviderManager.cs" />
     <Compile Include="Data\Parsers\IDataParser.cs" />
     <Compile Include="IProvider.cs" />
@@ -84,9 +93,12 @@
     <Compile Include="Data\ISettings.cs" />
     <Compile Include="Data\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleProviderManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CommonProvider.nuspec" />
+    <None Include="CommonProvider.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

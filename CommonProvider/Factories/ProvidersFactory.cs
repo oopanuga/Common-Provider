@@ -13,10 +13,10 @@ namespace CommonProvider.Factories
         readonly ProviderFactoryBase _providerFactory;
 
         /// <summary>
-        /// Initializes a new instance of ProviderListFactory 
+        /// Initializes a new instance of ProvidersFactory 
         /// with a specified provider factory.
         /// </summary>
-        /// <param name="providerFactory"></param>
+        /// <param name="providerFactory">Creates a Provider.</param>
         public ProvidersFactory(ProviderFactoryBase providerFactory)
         {
             if (providerFactory == null)
@@ -28,7 +28,7 @@ namespace CommonProvider.Factories
         }
 
         /// <summary>
-        /// The default constructor of ProviderListFactory. The default provider 
+        /// The default constructor of ProvidersFactory. The default provider 
         /// factory is used if the default constructor was called.
         /// </summary>
         public ProvidersFactory() { }
@@ -37,7 +37,7 @@ namespace CommonProvider.Factories
         /// Creates a Provider List based on the specified Provider Descriptors.
         /// </summary>
         /// <param name="providerDescriptors">Holds information regarding the providers.</param>
-        /// <returns>The Provider List.</returns>
+        /// <returns>The created Providers.</returns>
         public IProviders Create(IEnumerable<IProviderDescriptor> providerDescriptors)
         {
             if (_providerFactory == null)

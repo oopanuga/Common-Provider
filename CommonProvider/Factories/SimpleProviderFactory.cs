@@ -1,16 +1,19 @@
-﻿using CommonProvider.DependencyManagement;
+﻿
+
+using CommonProvider.DependencyManagement;
+
 namespace CommonProvider.Factories
 {
     /// <summary>
-    /// Represents the default implementation of a Provider Factory. 
-    /// It provides a means to create a Provider Factory.
+    /// Represents the default implementation of a Simple Provider Factory. 
+    /// It provides a means to create a Simple Provider Factory.
     /// </summary>
-    public class ProviderFactory : ProviderFactoryBase
+    public class SimpleProviderFactory : SimpleProviderFactoryBase
     {
         /// <summary>
-        /// Instantiates a Provider based on the specified type.
+        /// Instantiates a Simple Provider based on the specified type.
         /// </summary>
-        /// <typeparam name="T">The type of provider to instantiate.</typeparam>
+        /// <typeparam name="T">The type of simple provider to instantiate.</typeparam>
         /// <returns>An object instance based on the specified type.</returns>
         protected override T Create<T>()
         {
