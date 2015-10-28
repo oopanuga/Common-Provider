@@ -48,11 +48,6 @@
     <Compile Include="SimpleProviderManagerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\CommonProvider\CommonProvider.csproj">
       <Project>{a1387b8d-1c93-42ef-bf76-1e34a97ab5f3}</Project>
       <Name>CommonProvider</Name>
