@@ -53,13 +53,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonProvider.Example.SimpleProvider.Lib\CommonProvider.Example.SimpleProvider.Lib.csproj">
-      <Project>{36ED49E3-BD75-4ABA-9F45-0690C4D90AB5}</Project>
-      <Name>CommonProvider.Example.Lib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\CommonProvider\CommonProvider.csproj">
       <Project>{a1387b8d-1c93-42ef-bf76-1e34a97ab5f3}</Project>
       <Name>CommonProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonProvider.Example.SimpleProvider.Lib\CommonProvider.Example.SimpleProvider.Lib.csproj">
+      <Project>{36ed49e3-bd75-4aba-9f45-0690c4d90ab5}</Project>
+      <Name>CommonProvider.Example.SimpleProvider.Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
