@@ -1,21 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <metadata>
-        <id>CommonProvider</id>
-        <version>1.0.2</version>
-        <authors>Oluwaseun Opanuga</authors>
-		<owners>Oluwaseun Opanuga</owners>
-        <projectUrl>https://github.com/commonprovider/common-provider</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>CommonProvider is a simple library built to give you an easy and consistent way of accessing your providers/strategies</description>
-		<releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-		<copyright>Copyright 2015 CommonProvider</copyright>
-        <summary />
-        <language>en-US</language>
-        <tags>provider pattern strategy service extension extensibility</tags>
-    </metadata>
-    <files>
-        <file src="bin\release\CommonProvider.dll" target="lib\net45\CommonProvider.dll" />
-        <file src="bin\release\CommonProvider.XML" target="lib\net45\CommonProvider.XML" />
-    </files>
+  <metadata>
+    <id>CommonProvider</id>
+    <version>1.0.2</version>
+    <authors>Oluwaseun Opanuga</authors>
+    <owners>Oluwaseun Opanuga</owners>
+    <projectUrl>https://github.com/commonprovider/common-provider</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CommonProvider is a simple library built to give you an easy and consistent way of accessing your providers/strategies</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2015 CommonProvider</copyright>
+    <summary />
+    <language>en-US</language>
+    <tags>provider pattern strategy service extension extensibility</tags>
+  </metadata>
+  <files>
+    <file src="bin\ReleaseNET40\CommonProvider.dll" target="lib\net40\CommonProvider.dll" />
+    <file src="bin\ReleaseNET40\CommonProvider.XML" target="lib\net40\CommonProvider.XML" />
+    <file src="bin\ReleaseNET45\CommonProvider.dll" target="lib\net45\CommonProvider.dll" />
+    <file src="bin\ReleaseNET45\CommonProvider.XML" target="lib\net45\CommonProvider.XML" />
+  </files>
 </package>
