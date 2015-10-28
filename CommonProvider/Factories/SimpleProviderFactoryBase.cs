@@ -1,54 +1,53 @@
-﻿using CommonProvider.Data;
+﻿using System;
+using System.Reflection;
 using CommonProvider.Exceptions;
 using CommonProvider.Helpers;
-using System;
-using System.Reflection;
 
 namespace CommonProvider.Factories
 {
     /// <summary>
-    /// Represents the base class for a Provider Factory. 
-    /// It provides a means to create a Provider.
+    /// Represents the base class for a Simple Provider Factory. 
+    /// It provides a means to create a Simple Provider.
     /// </summary>
-    public abstract class ProviderFactoryBase
+    public abstract class SimpleProviderFactoryBase
     {
         /// <summary>
-        /// Instantiates a Provider based on the specified type.
+        /// Instantiates a Simple Provider based on the specified type.
         /// </summary>
-        /// <typeparam name="T">The type of provider to instantiate.</typeparam>
+        /// <typeparam name="T">The type of simple provider to instantiate.</typeparam>
         /// <returns>An object instance based on the specified type.</returns>
-        protected abstract T Create<T>() where T : IProvider;
+        protected abstract T Create<T>() where T : ISimpleProvider;
 
         /// <summary>
-        /// Creates a Provider based on the specified type.
+        /// Creates a Simple Provider based on the specified type.
         /// </summary>
-        /// <typeparam name="T">The type to cast the provider to.</typeparam>
-        /// <param name="providerDescriptor">Holds information about the provider to be created.</param>
+        /// <typeparam name="T">The type to cast the simple provider to.</typeparam>
+        /// <param name="providerType">The type of simple provider.</param>
         /// <returns>The created Provider.</returns>
-        public T Create<T>(IProviderDescriptor providerDescriptor) where T : IProvider
+        public T Create<T>(Type providerType) where T : ISimpleProvider
         {
             try
             {
-                if (providerDescriptor == null)
+                if (providerType == null)
                 {
-                    throw new ArgumentNullException("providerDescriptor");
+                    throw new ArgumentNullException("providerType");
                 }
 
                 Type type = typeof(T);
 
-                if (!type.IsAssignableFrom(providerDescriptor.ProviderType))
+                if (!type.IsAssignableFrom(providerType))
                 {
                     throw new CreateProviderException(
                                             string.Format("{0} should be assignable from {1}",
                                             type.Name,
-                                            providerDescriptor.ProviderType.Name
+                                            providerType.Name
                                             ));
                 }
 
                 var instance = GenericMethodInvoker.Invoke(
                                             this,
                                             "Create",
-                                            providerDescriptor.ProviderType,
+                                            providerType,
                                             new object[] { },
                                             BindingFlags.NonPublic | BindingFlags.Instance
                                             );
@@ -62,13 +61,8 @@ namespace CommonProvider.Factories
                         "implementation that exposes constructor arguments then please consider" +
                         "using any of the existing dependency resolvers or write your" +
                         "own implementation(see documentation for details)",
-                        providerDescriptor.ProviderType.Name));
+                        providerType.Name));
                 }
-
-                var provider = (IProvider)instance;
-                provider.Group = providerDescriptor.ProviderGroup;
-                provider.Name = providerDescriptor.ProviderName;
-                provider.Settings = providerDescriptor.ProviderSettings;
 
                 return (T)instance;
             }

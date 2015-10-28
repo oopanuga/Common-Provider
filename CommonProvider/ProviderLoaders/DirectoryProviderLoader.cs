@@ -8,12 +8,11 @@ using System.Reflection;
 namespace CommonProvider.ProviderLoaders
 {
     /// <summary>
-    /// Represents an implementation of ProviderLoaderBase that loads information 
-    /// regarding all providers from assemblies. The assemblies are located in the 
-    /// specified directory. The Directory Provider Loader does not require 
-    /// any configuration.
+    /// Represents an implementation of SimpleProviderLoaderBase that loads simple provider 
+    /// types from assemblies. The assemblies are located in the specified directory. The 
+    /// Directory Provider Loader does not require any configuration.
     /// </summary>
-    public class DirectoryProviderLoader : ProviderLoaderBase
+    public class DirectoryProviderLoader : SimpleProviderLoaderBase
     {
         readonly string _assemblyDirectory;
 
@@ -39,17 +38,15 @@ namespace CommonProvider.ProviderLoaders
         }
 
         /// <summary>
-        /// Loads information regrading all providers from assemblies located in the specified 
-        /// directory. All providers loaded using the Directory Provider Loader are enabled by 
+        /// Loads simple provider types from assemblies located in the specified directory. 
+        /// All  simple providers loaded using the Directory Provider Loader are enabled by 
         /// default. Remove a provider's assembly from the specified directory if you choose 
         /// to not load it.
         /// </summary>
-        /// <returns>The loaded providers data.</returns>
-        protected override IProviderData PerformLoad()
+        /// <returns>The loaded simple provider types.</returns>
+        protected override IEnumerable<Type> PerformLoad()
         {
             string[] dllFileNames;
-            var providerDescriptors = new List<ProviderDescriptor>();
-
 
             dllFileNames = Directory.GetFiles(_assemblyDirectory, "*.dll");
 
@@ -61,8 +58,8 @@ namespace CommonProvider.ProviderLoaders
                 assemblies.Add(assembly);
             }
 
-            Type providerType = typeof(IProvider);
-            ICollection<Type> providerTypes = new List<Type>();
+            Type providerType = typeof(ISimpleProvider);
+            ICollection<Type> providerTypes = null;
             foreach (Assembly assembly in assemblies)
             {
                 if (assembly != null)
@@ -85,19 +82,16 @@ namespace CommonProvider.ProviderLoaders
 
                         if (type.GetInterface(providerType.FullName) != null)
                         {
+                            if (providerTypes == null)
+                                providerTypes = new List<Type>();
+
                             providerTypes.Add(type);
                         }
                     }
                 }
             }
 
-            foreach (var exType in providerTypes)
-            {
-                providerDescriptors.Add(new ProviderDescriptor(
-                    string.Empty, string.Empty, exType, null, true));
-            }
-
-            return new ProviderData(providerDescriptors, null);
+            return providerTypes;
         }
     }
 }

@@ -15,9 +15,9 @@ namespace CommonProvider.Tests
             public void Should_load_providers_from_classes_of_type_iprovider()
             {
                 var loader = new DirectoryProviderLoader(Environment.CurrentDirectory);
-                var providerData = loader.Load();
+                var providerTypes = loader.Load();
 
-                Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(2));
+                Assert.That(providerTypes.Count(), Is.EqualTo(2));
             }
 
             [Test]
@@ -25,7 +25,7 @@ namespace CommonProvider.Tests
             public void Should_throw_exception_when_assembly_directory_doesnt_exist()
             {
                 var loader = new DirectoryProviderLoader("z:\\somefakedirectory\\");
-                var providerData = loader.Load();
+                loader.Load();
             }
 
             [TestCase("")]
@@ -34,7 +34,7 @@ namespace CommonProvider.Tests
             public void Should_throw_exception_when_assembly_directory_not_set(string assemblyDirectory)
             {
                 var loader = new DirectoryProviderLoader(assemblyDirectory);
-                var providerData = loader.Load();
+                loader.Load();
             }
         }
     }
