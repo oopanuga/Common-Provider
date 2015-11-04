@@ -1,5 +1,4 @@
 ﻿using CommonProvider.Configuration;
-using CommonProvider.Factories;
 using CommonProvider.ProviderLoaders;
 
 namespace CommonProvider.Example

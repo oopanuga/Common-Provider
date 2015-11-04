@@ -1,7 +1,7 @@
-﻿using System;
+﻿using CommonProvider.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using CommonProvider.Exceptions;
 
 namespace CommonProvider.ProviderLoaders
 {

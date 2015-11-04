@@ -1,6 +1,6 @@
-﻿using System;
-using CommonProvider.Example.SimpleProvider.Lib;
+﻿using CommonProvider.Example.SimpleProvider.Lib;
 using CommonProvider.Example.SimpleProvider.Lib.Providers;
+using System;
 
 namespace CommonProvider.Example.SimpleProvider
 {

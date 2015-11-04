@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CommonProvider.Data;
+using System;
 using System.Collections.Generic;
-using CommonProvider.Data;
 
 namespace CommonProvider.Factories
 {

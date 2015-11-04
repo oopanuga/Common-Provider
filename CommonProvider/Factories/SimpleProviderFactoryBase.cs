@@ -1,7 +1,7 @@
-﻿using System;
-using System.Reflection;
-using CommonProvider.Exceptions;
+﻿using CommonProvider.Exceptions;
 using CommonProvider.Helpers;
+using System;
+using System.Reflection;
 
 namespace CommonProvider.Factories
 {

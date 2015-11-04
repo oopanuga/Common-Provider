@@ -1,5 +1,4 @@
-﻿using CommonProvider.Example;
-using CommonProvider.Example.Providers;
+﻿using CommonProvider.Example.Providers;
 using System;
 
 namespace CommonProvider.Example

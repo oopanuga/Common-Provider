@@ -1,7 +1,7 @@
-﻿using System;
-using CommonProvider.Data;
+﻿using CommonProvider.Data;
 using CommonProvider.Factories;
 using CommonProvider.ProviderLoaders;
+using System;
 
 namespace CommonProvider
 {
