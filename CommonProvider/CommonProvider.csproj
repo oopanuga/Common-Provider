@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Configuration\IProviderConfigurationManager.cs" />
     <Compile Include="Configuration\ProviderConfigurationManager.cs" />
+    <Compile Include="Data\Extensions.cs" />
     <Compile Include="Data\ISimpleProviders.cs" />
     <Compile Include="Data\SimpleProviders.cs" />
     <Compile Include="Factories\ISimpleProvidersFactory.cs" />

@@ -1,5 +1,6 @@
 ﻿
 using CommonProvider.Data;
+
 namespace CommonProvider
 {
     /// <summary>
