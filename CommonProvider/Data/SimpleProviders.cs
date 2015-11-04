@@ -6,21 +6,71 @@ using CommonProvider.Factories;
 namespace CommonProvider.Data
 {
     /// <summary>
-    /// Represents a set of Providers.
+    /// Represents a list of Simple Providers.
     /// </summary>
-    public class SimpleProviders: ISimpleProviders
+    public class SimpleProviders : SimpleProviders<ISimpleProvider>, ISimpleProviders
+    {
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of Simple Providers with the specified provider 
+        /// types and a provider factory.
+        /// </summary>
+        /// <param name="providerTypes">A collection of simple provider types.</param>
+        /// <param name="providerFactory">The provider factory used to create simple providers 
+        /// as requested.</param>
+        public SimpleProviders(IEnumerable<Type> providerTypes,
+            SimpleProviderFactoryBase providerFactory)
+            : base(providerTypes, providerFactory)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of Simple Providers with the specified provider types. 
+        /// It internally uses the default provider factory for creating providers.
+        /// </summary>
+        /// <param name="providerTypes">A collection of simple provider types.</param>
+        public SimpleProviders(IEnumerable<Type> providerTypes)
+            : base(providerTypes)
+        {
+
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Gets all simple providers of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of the simple providers.</typeparam>
+        /// <returns>The matching simple providers.</returns>
+        public ISimpleProviders<T> All<T>() where T : ISimpleProvider
+        {
+            return new SimpleProviders<T>(_providerTypes, _providerFactory);
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Represents a generic list of Simple Providers.
+    /// </summary>
+    public class SimpleProviders<T> : ISimpleProviders<T>
+        where T : ISimpleProvider
     {
         #region Fields
 
-        readonly IEnumerable<Type> _providerTypes;
-        readonly SimpleProviderFactoryBase _providerFactory;
+        protected readonly IEnumerable<Type> _providerTypes;
+        protected readonly SimpleProviderFactoryBase _providerFactory;
+        readonly IEnumerable<T> _providers;
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of SImple Providers with the specified provider 
+        /// Initializes a new instance of Simple Providers with the specified provider 
         /// types and a provider factory.
         /// </summary>
         /// <param name="providerTypes">A collection of simple provider types.</param>
@@ -56,46 +106,55 @@ namespace CommonProvider.Data
 
         #endregion
 
-        #region Properties
+        #region Methods
 
         /// <summary>
-        /// Gets the count of simple providers
+        /// Gets all simple providers.
+        /// </summary>
+        /// <returns>The list of simple providers.</returns>
+        public ISimpleProviders<T> All()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// Gets the count of providers.
         /// </summary>
         public int Count
         {
             get
             {
-                return All<ISimpleProvider>().Count();
+                return All().Count();
             }
         }
 
-        #endregion
-
-        #region Methods
-
         /// <summary>
-        /// Gets all simple providers of the specified type.
+        /// Returns an enumerator that iterates through the Providers collection.
         /// </summary>
-        /// <typeparam name="T">The type of the simple providers to get.</typeparam>
-        /// <returns>The matching simple providers.</returns>
-        public IEnumerable<T> All<T>() where T : ISimpleProvider
+        /// <returns>A System.Collections.Generic.IEnumerator<T> that 
+        /// can be used to iterate through the collection.</returns>
+        public IEnumerator<T> GetEnumerator()
         {
-            var providers =
-                _providerTypes
-                .Where(x =>
-                    typeof(T).IsAssignableFrom(x))
-                    .Select(x => _providerFactory.Create<T>(x));
-                
-            return providers;
+            if (_providerTypes != null && _providerTypes.Any())
+            {
+                foreach (var _providerType in _providerTypes)
+                {
+                    if (typeof(T).IsAssignableFrom(_providerType))
+                    {
+                        yield return _providerFactory.Create<T>(_providerType);
+                    }
+                }
+            }
         }
 
         /// <summary>
-        /// Gets all simple providers.
+        /// Returns an enumerator that iterates through a collection.
         /// </summary>
-        /// <returns>The simple providers.</returns>
-        public IEnumerable<ISimpleProvider> All()
+        /// <returns>A System.Collections.Generic.IEnumerator that 
+        /// can be used to iterate through the collection.</returns>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return All<ISimpleProvider>();
+            return this.GetEnumerator();
         }
 
         #endregion
