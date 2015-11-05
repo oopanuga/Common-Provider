@@ -6,7 +6,7 @@ namespace CommonProvider.Data
     /// Represents the base interface for a generic list of Providers.
     /// </summary>
     /// <typeparam name="T">The type of Simple Provider.</typeparam>
-    public interface ISimpleProviderList<T> : IEnumerable<T>
+    public interface ISimpleProviderList<out T> : IEnumerable<T>
         where T : ISimpleProvider
     {
         /// <summary>
