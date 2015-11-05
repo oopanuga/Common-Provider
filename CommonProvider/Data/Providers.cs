@@ -55,10 +55,10 @@ namespace CommonProvider.Data
             {
                 return GenericMethodInvoker.Invoke(
                     this,
-                    "GetByName",
+                    "ByName",
                     type,
                     new object[] { providerName },
-                    BindingFlags.NonPublic | BindingFlags.Instance
+                    BindingFlags.Public | BindingFlags.Instance
                     );
             }
         }
@@ -109,22 +109,6 @@ namespace CommonProvider.Data
                     .Equals(providerName,
                     StringComparison.OrdinalIgnoreCase))
                 .SingleOrDefault();
-
-            return provider;
-        }
-
-        #endregion
-
-        #region Helpers
-
-        private T GetByName<T>(string providerName) where T : IProvider
-        {
-            var provider =
-               All<T>().Where(x =>
-                   x.Name
-                   .Equals(providerName,
-                   StringComparison.OrdinalIgnoreCase))
-               .SingleOrDefault();
 
             return provider;
         }
