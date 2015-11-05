@@ -2,12 +2,21 @@
 
 namespace CommonProvider.Data
 {
+    /// <summary>
+    /// Extensions for Common Provider data bits
+    /// </summary>
     public static class Extensions
     {
-        public static IProviders<T> ToProviders<T>(this IEnumerable<T> providerSource)
+        /// <summary>
+        /// Gets an instance of ProviderList that takes an IEnumerable list of providers.
+        /// </summary>
+        /// <typeparam name="T">The type of the provider.</typeparam>
+        /// <param name="providers"></param>
+        /// <returns>The Provider List.</returns>
+        public static IProviderList<T> ToProviders<T>(this IEnumerable<T> providers)
             where T : IProvider
         {
-            return new Providers<T>(providerSource);
+            return new ProviderList<T>(providers);
         }
     }
 }
