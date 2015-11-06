@@ -74,7 +74,7 @@ namespace CommonProvider.Data
         /// <returns>The matching providers.</returns>
         public IProviderList<T> All<T>() where T : IProvider
         {
-            return new ProviderList<T>(_providerDescriptors, _providerFactory);
+            return new ProviderList<T>(ProviderDescriptors, ProviderFactory);
         }
 
         /// <summary>

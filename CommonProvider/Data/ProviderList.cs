@@ -16,9 +16,20 @@ namespace CommonProvider.Data
     {
         #region Fields
 
-        protected readonly IEnumerable<IProviderDescriptor> _providerDescriptors;
-        protected readonly ProviderFactoryBase _providerFactory;
-        protected readonly IEnumerable<T> _providers;
+        /// <summary>
+        /// Gets a list of Provider Descriptors
+        /// </summary>
+        protected readonly IEnumerable<IProviderDescriptor> ProviderDescriptors;
+
+        /// <summary>
+        /// Gets the Provider Factory
+        /// </summary>
+        protected readonly ProviderFactoryBase ProviderFactory;
+
+        /// <summary>
+        /// Gets a source list of Providers
+        /// </summary>
+        protected readonly IEnumerable<T> Providers;
 
         #endregion
 
@@ -44,8 +55,8 @@ namespace CommonProvider.Data
                 throw new ArgumentNullException("providerFactory");
             }
 
-            this._providerDescriptors = providerDescriptors;
-            this._providerFactory = providerFactory;
+            this.ProviderDescriptors = providerDescriptors;
+            this.ProviderFactory = providerFactory;
         }
 
         /// <summary>
@@ -65,7 +76,7 @@ namespace CommonProvider.Data
         /// <param name="providers">The collection of providers.</param>
         public ProviderList(IEnumerable<T> providers)
         {
-            this._providers = providers;
+            this.Providers = providers;
         }
 
         #endregion
@@ -139,26 +150,25 @@ namespace CommonProvider.Data
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through the Providers collection.
+        /// Returns a generic enumerator that iterates through the Provider List.
         /// </summary>
-        /// <returns>A System.Collections.Generic.IEnumerator<T> that 
-        /// can be used to iterate through the collection.</returns>
+        /// <returns>The generic enumerator.</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            if (this._providerDescriptors != null && this._providerDescriptors.Any())
+            if (this.ProviderDescriptors != null && this.ProviderDescriptors.Any())
             {
-                foreach (var providerDescriptor in this._providerDescriptors)
+                foreach (var providerDescriptor in this.ProviderDescriptors)
                 {
                     if (typeof(T).IsAssignableFrom(providerDescriptor.ProviderType)
                         && providerDescriptor.IsEnabled)
                     {
-                        yield return this._providerFactory.Create<T>(providerDescriptor);
+                        yield return this.ProviderFactory.Create<T>(providerDescriptor);
                     }
                 }
             }
             else
             {
-                foreach (var provider in this._providers)
+                foreach (var provider in this.Providers)
                 {
                     yield return provider;
                 }
@@ -166,10 +176,9 @@ namespace CommonProvider.Data
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through a collection.
+        /// Returns an enumerator that iterates through the Provider List.
         /// </summary>
-        /// <returns>A System.Collections.Generic.IEnumerator that 
-        /// can be used to iterate through the collection.</returns>
+        /// <returns>The generic enumerator.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();

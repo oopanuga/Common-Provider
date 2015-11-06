@@ -16,8 +16,15 @@ namespace CommonProvider.Data
     {
         #region Fields
 
-        protected readonly IEnumerable<Type> _providerTypes;
-        protected readonly SimpleProviderFactoryBase _providerFactory;
+        /// <summary>
+        /// Gets a list of Provider Types
+        /// </summary>
+        protected readonly IEnumerable<Type> ProviderTypes;
+
+        /// <summary>
+        /// Gets a Simple Provider Factory
+        /// </summary>
+        protected readonly SimpleProviderFactoryBase ProviderFactory;
 
         #endregion
 
@@ -42,8 +49,8 @@ namespace CommonProvider.Data
                 throw new ArgumentNullException("providerFactory");
             }
 
-            this._providerTypes = providerTypes;
-            this._providerFactory = providerFactory;
+            this.ProviderTypes = providerTypes;
+            this.ProviderFactory = providerFactory;
         }
 
         /// <summary>
@@ -81,29 +88,27 @@ namespace CommonProvider.Data
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through the Providers collection.
+        /// Returns a generic enumerator that iterates through the Simple Provider List.
         /// </summary>
-        /// <returns>A System.Collections.Generic.IEnumerator<T> that 
-        /// can be used to iterate through the collection.</returns>
+        /// <returns>The generic enumerator.</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            if (this._providerTypes != null && this._providerTypes.Any())
+            if (this.ProviderTypes != null && this.ProviderTypes.Any())
             {
-                foreach (var _providerType in this._providerTypes)
+                foreach (var _providerType in this.ProviderTypes)
                 {
                     if (typeof(T).IsAssignableFrom(_providerType))
                     {
-                        yield return this._providerFactory.Create<T>(_providerType);
+                        yield return this.ProviderFactory.Create<T>(_providerType);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through a collection.
+        /// Returns an enumerator that iterates through the Simple Provider List.
         /// </summary>
-        /// <returns>A System.Collections.Generic.IEnumerator that 
-        /// can be used to iterate through the collection.</returns>
+        /// <returns>The enumerator.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();

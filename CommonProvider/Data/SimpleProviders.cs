@@ -45,7 +45,7 @@ namespace CommonProvider.Data
         /// <returns>The matching simple providers.</returns>
         public ISimpleProviderList<T> All<T>() where T : ISimpleProvider
         {
-            return new SimpleProviderList<T>(_providerTypes, _providerFactory);
+            return new SimpleProviderList<T>(ProviderTypes, ProviderFactory);
         }
 
         #endregion
