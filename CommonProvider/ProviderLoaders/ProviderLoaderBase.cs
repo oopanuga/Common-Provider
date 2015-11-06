@@ -10,7 +10,7 @@ namespace CommonProvider.ProviderLoaders
     public abstract class ProviderLoaderBase
     {
         /// <summary>
-        /// Loads information regrading all providers e.g. Type, Name etc. 
+        /// Loads provider information/meta data e.g. Type, Name etc. 
         /// This method is visible to only classes that derive from 
         /// ProviderLoaderBase. Its is called internally by the public 
         /// Load() method.
@@ -19,7 +19,7 @@ namespace CommonProvider.ProviderLoaders
         protected abstract IProviderData PerformLoad();
 
         /// <summary>
-        /// Loads information regrading all providers e.g. Type, Name etc.
+        /// Loads provider information/meta data e.g. Type, Name etc.
         /// </summary>
         /// <returns>The loaded providers data.</returns>
         internal IProviderData Load()

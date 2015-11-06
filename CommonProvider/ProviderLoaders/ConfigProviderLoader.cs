@@ -28,7 +28,7 @@ namespace CommonProvider.ProviderLoaders
         }
 
         /// <summary>
-        /// Loads information regrading all providers from a configuration file.
+        /// Loads provider information/meta data from a configuration file.
         /// </summary>
         /// <returns>The loaded providers data.</returns>
         protected override IProviderData PerformLoad()
