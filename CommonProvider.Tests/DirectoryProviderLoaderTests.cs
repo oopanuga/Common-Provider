@@ -12,7 +12,7 @@ namespace CommonProvider.Tests
         public class Load
         {
             [Test]
-            public void Should_load_providers_from_classes_of_type_iprovider()
+            public void Should_load_providers_from_classes_of_type_isimpleprovider()
             {
                 var loader = new DirectoryProviderLoader(Environment.CurrentDirectory);
                 var providerTypes = loader.Load();
