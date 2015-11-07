@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonProvider.Example.Simp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonProvider.Example.SimpleProvider", "Examples\CommonProvider.Example.SimpleProvider\CommonProvider.Example.SimpleProvider.csproj", "{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{BF681315-C6DE-4130-BA08-4AF4DE4AA1C6}"
+	ProjectSection(SolutionItems) = preProject
+		CommonProvider\build_solution.bat = CommonProvider\build_solution.bat
+		CommonProvider\CommonProvider.nuspec = CommonProvider\CommonProvider.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
