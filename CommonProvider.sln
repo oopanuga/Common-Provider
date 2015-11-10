@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{BF681315
 	ProjectSection(SolutionItems) = preProject
 		CommonProvider\build_solution.bat = CommonProvider\build_solution.bat
 		CommonProvider\CommonProvider.nuspec = CommonProvider\CommonProvider.nuspec
+		StyleCop\RunStyleCop.msbuild = StyleCop\RunStyleCop.msbuild
+		StyleCop\StyleCop.xsl = StyleCop\StyleCop.xsl
 	EndProjectSection
 EndProject
 Global
