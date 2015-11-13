@@ -3,9 +3,9 @@ using System.Text;
 
 namespace CommonProvider.Example.Providers
 {
-    public class NexmoSmsProvider : ISmsProvider
+    public class NexmoSmsProvider : SmsProviderBase
     {
-        public string SendSms(Message message)
+        public override string SendSms(Message message)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -18,11 +18,5 @@ namespace CommonProvider.Example.Providers
 
             return stringBuilder.ToString();
         }
-
-        public string Name { get; set; }
-
-        public ISettings Settings { get; set; }
-
-        public string Group { get; set; }
     }
 }

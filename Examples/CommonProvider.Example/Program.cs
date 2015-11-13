@@ -13,11 +13,11 @@ namespace CommonProvider.Example
         private static void SendSms()
         {
             var providerManager = ProviderManagerFactory.Create();
-            var smsProviders = providerManager.Providers.All<ISmsProvider>();
+            var smsProviders = providerManager.Providers.All<SmsProviderBase>();
 
             var message = providerManager.Settings.Get<Message>("Message");
 
-            foreach (ISmsProvider smsProvider in smsProviders)
+            foreach (SmsProviderBase smsProvider in smsProviders)
             {
                 var result = smsProvider.SendSms(message);
                 Console.WriteLine(result);

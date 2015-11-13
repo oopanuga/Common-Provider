@@ -48,7 +48,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderManagerFactory.cs" />
-    <Compile Include="Providers\ISmsProvider.cs" />
+    <Compile Include="Providers\SmsProviderBase.cs" />
     <Compile Include="Providers\NexmoSmsProvider.cs" />
     <Compile Include="Providers\TwilioSmsProvider.cs" />
   </ItemGroup>
