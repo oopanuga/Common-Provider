@@ -1,6 +1,6 @@
 # CommonProvider
 
-CommonProvider is a simple library built to give you an easy and consistent way of accessing your providers (Provider model/pattern) or strategies (Strategy pattern). These really similar patterns promote loose coupling and enables extensibility in your applications.
+CommonProvider is a simple library built to give you an easy and consistent way of loading and accessing your providers (Provider model/pattern) or strategies (Strategy pattern). These really similar patterns promote loose coupling and enables extensibility in your applications.
 
 ### Key Features
 Some key features of CommonProvider are,
@@ -22,7 +22,7 @@ CommonProvider has various extension points but the key ones are,
 3. Write custom data parsers for dealing with complex settings.
 
 ### Using CommonProvider
-Examples on how to use this can be found in the solution [here](https://github.com/commonprovider/common-provider/tree/master/Examples).
+Examples on how to use this can be found in the solution [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
 
 ### Installing CommonProvider [Nuget Package](https://www.nuget.org/packages/CommonProvider/)
 
