@@ -24,13 +24,7 @@ CommonProvider has various extension points but the key ones are,
 ### Using CommonProvider
 Checkout detailed examples on its usage [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
 
-Register CommonProvider
-```xml
-<configSections>
-    <section name="commonProvider" type="CommonProvider.Configuration.ProviderConfigSection, CommonProvider"/>
-</configSections>
-```
-Implement either IProvider (requires configuration) or ISimpleProvider (does't require configuration) interface
+Implement either the IProvider (requires configuration) or ISimpleProvider (does't require configuration) interface
 ```c#
 public abstract class SmsProviderBase : IProvider
 {
@@ -54,6 +48,13 @@ public class NexmoSmsProvider : SmsProviderBase
         return stringBuilder.ToString();
     }
 }
+```
+
+Register CommonProvider (not required for ISimpleProvider implementation)
+```xml
+<configSections>
+    <section name="commonProvider" type="CommonProvider.Configuration.ProviderConfigSection, CommonProvider"/>
+</configSections>
 ```
 
 Config setup for providers/settings (not required for ISimpleProvider implementation)
