@@ -22,6 +22,7 @@ CommonProvider has various extension points but the key ones are,
 3. Write custom data parsers for dealing with complex settings.
 
 ### Using CommonProvider
+Checkout detailed examples on its usage [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
 
 Register CommonProvider
 ```xml
@@ -55,7 +56,7 @@ public class NexmoSmsProvider : SmsProviderBase
 }
 ```
 
-Setup providers and settings (not needed for ISimpleProvider implementation)
+Config setup for providers/settings (not required for ISimpleProvider implementation)
 ```xml
 <commonProvider>
     <!--Define your types here-->
