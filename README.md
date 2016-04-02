@@ -111,4 +111,4 @@ var message = providerManager.Settings.Get<Message>("Message");
 ```
 
 
-###### Checkout detailed examples on its usage [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
+More detailed examples [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
