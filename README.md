@@ -24,7 +24,7 @@ CommonProvider has various extension points but the key ones are,
 ### Using CommonProvider
 Examples on how to use this can be found in the solution [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
 
-### Installing CommonProvider [Nuget Package](https://www.nuget.org/packages/CommonProvider/)
+### Installing CommonProvider [Nuget Package](https://www.nuget.org/packages/SeoPack/)
 
 ```
 PM> Install-Package CommonProvider
