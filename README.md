@@ -50,15 +50,12 @@ public class NexmoSmsProvider : SmsProviderBase
 }
 ```
 
-Register CommonProvider (not required for ISimpleProvider implementation)
+Config setup for CommonProvider (not required for ISimpleProvider implementation)
 ```xml
 <configSections>
     <section name="commonProvider" type="CommonProvider.Configuration.ProviderConfigSection, CommonProvider"/>
 </configSections>
-```
 
-Config setup for providers/settings (not required for ISimpleProvider implementation)
-```xml
 <commonProvider>
     <!--Define your types here-->
     <types>
