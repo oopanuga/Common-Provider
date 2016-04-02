@@ -21,7 +21,7 @@ CommonProvider has various extension points but the key ones are,
 2. Write custom dependency resolvers.
 3. Write custom data parsers for dealing with complex settings.
 
-### Installing CommonProvider [nuget](https://www.nuget.org/packages/CommonProvider/)
+### Installing CommonProvider - [nuget](https://www.nuget.org/packages/CommonProvider/)
 
 ```
 PM> Install-Package CommonProvider
@@ -111,4 +111,4 @@ var message = providerManager.Settings.Get<Message>("Message");
 ```
 
 
-Checkout detailed examples on its usage [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
+###### Checkout detailed examples on its usage [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
