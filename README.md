@@ -29,7 +29,7 @@ PM> Install-Package CommonProvider
 
 ### Using CommonProvider
 
-Implement either the IProvider (requires configuration) or ISimpleProvider (does't require configuration) interface
+Implement either the IProvider (requires configuration) or ISimpleProvider (doesn't require configuration) interface
 ```c#
 public abstract class SmsProviderBase : IProvider
 {
