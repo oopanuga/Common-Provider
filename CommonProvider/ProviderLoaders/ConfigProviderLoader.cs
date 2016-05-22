@@ -1,8 +1,8 @@
-﻿using CommonProvider.Configuration;
-using CommonProvider.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using CommonProvider.Configuration;
+using CommonProvider.Data;
 
 namespace CommonProvider.ProviderLoaders
 {
@@ -33,13 +33,13 @@ namespace CommonProvider.ProviderLoaders
         /// <returns>The loaded providers data.</returns>
         protected override IProviderData PerformLoad()
         {
-            var configSection = 
+            var configSection =
                 _providerConfigurationManager.GetSection(SectionName);
- 
+
             if (configSection == null)
             {
                 throw new ConfigurationErrorsException(
-                    string.Format("Config section {0} not defined", 
+                    string.Format("Config section {0} not defined",
                     SectionName));
             }
 

@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
-using CommonProvider.Factories;
+using System.Reflection;
+using CommonProvider.DependencyManagement;
+using CommonProvider.Exceptions;
 
 namespace CommonProvider.Data
 {
@@ -21,37 +22,9 @@ namespace CommonProvider.Data
         /// </summary>
         protected readonly IEnumerable<Type> ProviderTypes;
 
-        /// <summary>
-        /// Gets a Simple Provider Factory
-        /// </summary>
-        protected readonly SimpleProviderFactoryBase ProviderFactory;
-
         #endregion
 
         #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of Simple Providers with the specified provider 
-        /// types and a provider factory.
-        /// </summary>
-        /// <param name="providerTypes">A collection of simple provider types.</param>
-        /// <param name="providerFactory">The provider factory used to create simple providers 
-        /// as requested.</param>
-        public SimpleProviderList(IEnumerable<Type> providerTypes, SimpleProviderFactoryBase providerFactory)
-        {
-            if (providerTypes == null || !providerTypes.Any())
-            {
-                throw new ArgumentException("providerTypes not set");
-            }
-
-            if (providerFactory == null)
-            {
-                throw new ArgumentNullException("providerFactory");
-            }
-
-            this.ProviderTypes = providerTypes;
-            this.ProviderFactory = providerFactory;
-        }
 
         /// <summary>
         /// Initializes a new instance of Simple Providers with the specified provider types. 
@@ -59,8 +32,13 @@ namespace CommonProvider.Data
         /// </summary>
         /// <param name="providerTypes">A collection of simple provider types.</param>
         public SimpleProviderList(IEnumerable<Type> providerTypes)
-            : this(providerTypes, new SimpleProviderFactory())
         {
+            if (providerTypes == null || !providerTypes.Any())
+            {
+                throw new ArgumentException("providerTypes not set");
+            }
+
+            this.ProviderTypes = providerTypes;
         }
 
         #endregion
@@ -99,7 +77,7 @@ namespace CommonProvider.Data
                 {
                     if (typeof(T).IsAssignableFrom(_providerType))
                     {
-                        yield return this.ProviderFactory.Create<T>(_providerType);
+                        yield return CreateSimpleProvider<T>(_providerType);
                     }
                 }
             }
@@ -112,6 +90,111 @@ namespace CommonProvider.Data
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+
+        #region Helpers
+
+        /// <summary>
+        /// Creates a Simple Provider based on the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type to cast the simple provider to.</typeparam>
+        /// <param name="providerType">The type of simple provider.</param>
+        /// <returns>The created Simple Provider.</returns>
+        protected T CreateSimpleProvider<T>(Type providerType) where T : ISimpleProvider
+        {
+            try
+            {
+                if (providerType == null)
+                {
+                    throw new ArgumentNullException("providerType");
+                }
+
+                Type type = typeof(T);
+
+                if (!type.IsAssignableFrom(providerType))
+                {
+                    throw new CreateProviderException(
+                                            string.Format("{0} should be assignable from {1}",
+                                            type.Name,
+                                            providerType.Name
+                                            ));
+                }
+
+                var instance = GenericMethodInvoker.Invoke(
+                                            this,
+                                            "Create",
+                                            providerType,
+                                            new object[] { },
+                                            BindingFlags.NonPublic | BindingFlags.Instance
+                                            );
+
+                if (instance == null)
+                {
+                    throw new CreateProviderException(
+                        string.Format(
+                        "Could not create instance of type {0}. If you've got a Provider " +
+                        "implementation that exposes constructor arguments then please consider " +
+                        "using any of the existing dependency resolvers or write your " +
+                        "own implementation(see documentation for details)",
+                        providerType.Name));
+                }
+
+                return (T)instance;
+            }
+            catch (Exception ex)
+            {
+                if (!(ex is CreateProviderException))
+                {
+                    throw new CreateProviderException(
+                        "Error creating provider",
+                        ex);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        protected T Create<T>() where T : ISimpleProvider
+        {
+            var dependencyResolver = DependencyResolverService.GetResolver();
+            return dependencyResolver.Resolve<T>();
+        } 
+
+        #endregion
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Represents a list of Simple Providers.
+    /// </summary>
+    public class SimpleProviderList : SimpleProviderList<ISimpleProvider>, ISimpleProviderList
+    {
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of Simple Providers with the specified provider types. 
+        /// </summary>
+        /// <param name="providerTypes">A collection of simple provider types.</param>
+        public SimpleProviderList(IEnumerable<Type> providerTypes)
+            : base(providerTypes)
+        {
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Gets all simple providers of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of the simple providers.</typeparam>
+        /// <returns>The matching simple providers.</returns>
+        public ISimpleProviderList<T> All<T>() where T : ISimpleProvider
+        {
+            return new SimpleProviderList<T>(ProviderTypes);
         }
 
         #endregion

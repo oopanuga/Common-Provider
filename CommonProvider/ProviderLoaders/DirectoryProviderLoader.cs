@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -28,7 +27,7 @@ namespace CommonProvider.ProviderLoaders
                 throw new ArgumentException("assemblyDirectory not set");
             }
 
-            if (!Directory.Exists(assemblyDirectory))
+            if (!System.IO.Directory.Exists(assemblyDirectory))
             {
                 throw new ArgumentException("assemblyDirectory does not exist");
             }
@@ -47,7 +46,7 @@ namespace CommonProvider.ProviderLoaders
         {
             string[] dllFileNames;
 
-            dllFileNames = Directory.GetFiles(_assemblyDirectory, "*.dll");
+            dllFileNames = System.IO.Directory.GetFiles(_assemblyDirectory, "*.dll");
 
             ICollection<Assembly> assemblies = new List<Assembly>(dllFileNames.Length);
             foreach (string dllFile in dllFileNames)

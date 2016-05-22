@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace CommonProvider.Helpers
+namespace CommonProvider
 {
     /// <summary>
     /// Provides a mean to dyncamically invoke a generic method.

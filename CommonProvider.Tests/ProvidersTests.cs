@@ -1,5 +1,4 @@
 ﻿using CommonProvider.Data;
-using CommonProvider.Factories;
 using CommonProvider.Tests.TestClasses;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -24,9 +23,7 @@ namespace CommonProvider.Tests
 
                 var providerDesccriptors = new List<ProviderDescriptor>();
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
             }
 
             [Test]
@@ -37,36 +34,7 @@ namespace CommonProvider.Tests
 
                 List<ProviderDescriptor> providerDesccriptors = null;
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
-            }
-
-            [Test]
-            [ExpectedException(typeof(ArgumentNullException))]
-            public void Should_throw_exception_when_provider_factory_is_null()
-            {
-                var settings = MockRepository.GenerateMock<ISettings>();
-
-                var fooProviderName = "Foo Provider";
-                var fooProviderGroup = "FooProviders";
-                var fooProviderType = typeof(FooProvider);
-                var isFooProviderEnabled = true;
-
-                var providerDesccriptors = new List<ProviderDescriptor>();
-                providerDesccriptors.Add(new ProviderDescriptor(
-                        fooProviderName,
-                        fooProviderGroup,
-                        fooProviderType,
-                        settings,
-                        isFooProviderEnabled
-                        ));
-
-                ProviderFactory providerFactory = null;
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
-
-                Assert.That(providers.All<IFooProvider>().Count(), Is.EqualTo(1));
+                var providers = new ProviderList(providerDesccriptors);
             }
         }
 
@@ -106,9 +74,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProviders = providers.All<IFooProvider>();
 
@@ -136,9 +102,7 @@ namespace CommonProvider.Tests
                         isFooProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 Assert.That(providers.All<IBarProvider>().Count(), Is.EqualTo(0));
             }
@@ -180,9 +144,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProviders = providers.All().ToList();
 
@@ -227,9 +189,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProviders = providers.ByGroup(fooProviderGroup).ToList();
 
@@ -272,9 +232,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProviders = providers.ByGroup(inexistentGroup).ToList();
 
@@ -318,9 +276,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProviders = providers.ByGroup<IFooProvider>(fooProviderGroup).ToList();
 
@@ -362,9 +318,7 @@ namespace CommonProvider.Tests
                        isBarProviderEnabled
                        ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 IList returnedProviders = null;
                 if (providerType == typeof(IFooProvider))
@@ -416,9 +370,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProvider = providers.ByName(fooProviderName);
 
@@ -461,9 +413,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProvider = providers.ByName(inexistentName);
 
@@ -507,9 +457,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProvider = providers.ByName<IFooProvider>(fooProviderName);
 
@@ -551,9 +499,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 IProvider returnedProvider = null;
                 if (providerType == typeof(IFooProvider))
@@ -605,9 +551,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProvider = providers[fooProviderName];
 
@@ -650,9 +594,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProvider = providers[inexistentName];
 
@@ -696,9 +638,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProvider = providers[fooProviderName, typeof(IFooProvider)];
 
@@ -740,9 +680,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 var returnedProvider = providers[providerName, providerType];
 
@@ -786,9 +724,7 @@ namespace CommonProvider.Tests
                         isBarProviderEnabled
                         ));
 
-                var providerFactory = new ProviderFactory();
-
-                var providers = new Providers(providerDesccriptors, providerFactory);
+                var providers = new ProviderList(providerDesccriptors);
 
                 Assert.That(providers.Count, Is.EqualTo(2));
             }

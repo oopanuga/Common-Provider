@@ -59,7 +59,7 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
@@ -149,7 +149,7 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
@@ -318,7 +318,7 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
@@ -335,7 +335,7 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
@@ -356,7 +356,7 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);

@@ -7,7 +7,7 @@ namespace CommonProvider.Data.Parsers
 	/// <summary>
 	/// Represents the default data parser and parses a piped delimited string of data.
 	/// </summary>
-	public class PipedDataParser : IDataParser
+	public class PipeDataParser : IDataParser
 	{
         /// <summary>
         /// Parses a string of data to the specified type.

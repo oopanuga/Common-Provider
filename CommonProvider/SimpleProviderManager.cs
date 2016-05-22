@@ -1,10 +1,21 @@
 ﻿using CommonProvider.Data;
-using CommonProvider.Factories;
 using CommonProvider.ProviderLoaders;
 using System;
 
 namespace CommonProvider
 {
+    /// <summary>
+    /// Represents the base interface for ISimpleProviderManager. This is 
+    /// the gateway to all simple providers.
+    /// </summary>
+    public interface ISimpleProviderManager
+    {
+        /// <summary>
+        /// Gets the set of loaded simple providers.
+        /// </summary>
+        ISimpleProviderList Providers { get; }
+    }
+
     /// <summary>
     /// Represents the default implementation of ISimpleProviderManager. 
     /// This is the gateway to all simple providers
@@ -13,40 +24,20 @@ namespace CommonProvider
     {
         #region Constructors
 
+
         /// <summary>
-        /// Initializes an instance of SimpleProviderManager using the specified 
-        /// provider loader and provider list factory.
+        /// Initializes an instance of SimpleProviderManager using the specified provider loader. 
         /// </summary>
-        /// <param name="providerLoader">The provider loader to use in loading 
-        /// the providers.</param>
-        /// <param name="providersFactory">The Providers factory to use 
-        /// in creating the set of providers.</param>
-        public SimpleProviderManager(SimpleProviderLoaderBase providerLoader,
-            ISimpleProvidersFactory providersFactory)
+        /// <param name="providerLoader">The provider loader to use in loading the providers.</param>
+        public SimpleProviderManager(SimpleProviderLoaderBase providerLoader)
         {
             if (providerLoader == null)
             {
                 throw new ArgumentNullException("providerLoader");
             }
 
-            if (providersFactory == null)
-            {
-                throw new ArgumentNullException("providersFactory");
-            }
-
             var providerTypes = providerLoader.Load();
-            Providers = providersFactory.Create(providerTypes);
-        }
-
-        /// <summary>
-        /// Initializes an instance of SimpleProviderManager using the specified provider loader. 
-        /// It internally uses the default providers factory to create the provider list.
-        /// </summary>
-        /// <param name="providerLoader">The provider loader to use in loading the providers.</param>
-        public SimpleProviderManager(SimpleProviderLoaderBase providerLoader)
-            : this(providerLoader, new SimpleProvidersFactory())
-        {
-
+            Providers = new SimpleProviderList(providerTypes);
         }
 
         #endregion
@@ -56,7 +47,7 @@ namespace CommonProvider
         /// <summary>
         /// Gets the set of loaded providers.
         /// </summary>
-        public ISimpleProviders Providers { get; private set; }
+        public ISimpleProviderList Providers { get; private set; }
 
         #endregion
     }

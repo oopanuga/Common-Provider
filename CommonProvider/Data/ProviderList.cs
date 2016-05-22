@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
-using CommonProvider.Factories;
+using System.Reflection;
+using CommonProvider.DependencyManagement;
+using CommonProvider.Exceptions;
 
 namespace CommonProvider.Data
 {
@@ -22,11 +23,6 @@ namespace CommonProvider.Data
         protected readonly IEnumerable<IProviderDescriptor> ProviderDescriptors;
 
         /// <summary>
-        /// Gets the Provider Factory
-        /// </summary>
-        protected readonly ProviderFactoryBase ProviderFactory;
-
-        /// <summary>
         /// Gets a source list of Providers
         /// </summary>
         protected readonly IEnumerable<T> Providers;
@@ -36,38 +32,18 @@ namespace CommonProvider.Data
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of Providers with the specified provider 
-        /// descriptors and a provider factory.
+        /// Initializes a new instance of Providers with the specified provider descriptors.
         /// </summary>
         /// <param name="providerDescriptors">A collection of provider providerDescriptors 
         /// that holds information regarding all loaded providers.</param>
-        /// <param name="providerFactory">The provider factory used to create providers 
-        /// as requested.</param>
-        public ProviderList(IEnumerable<IProviderDescriptor> providerDescriptors, ProviderFactoryBase providerFactory)
+        public ProviderList(IEnumerable<IProviderDescriptor> providerDescriptors)
         {
             if (providerDescriptors == null || !providerDescriptors.Any())
             {
                 throw new ArgumentException("providerDescriptors not set");
             }
 
-            if (providerFactory == null)
-            {
-                throw new ArgumentNullException("providerFactory");
-            }
-
             this.ProviderDescriptors = providerDescriptors;
-            this.ProviderFactory = providerFactory;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of Providers with the specified provider descriptors. 
-        /// It internally uses the default provider factory for creating providers.
-        /// </summary>
-        /// <param name="providerDescriptors">A collection of provider descriptors that holds 
-        /// information regarding all loaded providers.</param>
-        public ProviderList(IEnumerable<IProviderDescriptor> providerDescriptors)
-            : this(providerDescriptors, new ProviderFactory())
-        {
         }
 
         /// <summary>
@@ -117,7 +93,7 @@ namespace CommonProvider.Data
                 this.Where(x =>
                     x.Group.Equals(groupName,
                     StringComparison.OrdinalIgnoreCase))
-                    .ToProviders();
+                    .ToProviderList();
 
             return providers;
         }
@@ -162,7 +138,7 @@ namespace CommonProvider.Data
                     if (typeof(T).IsAssignableFrom(providerDescriptor.ProviderType)
                         && providerDescriptor.IsEnabled)
                     {
-                        yield return this.ProviderFactory.Create<T>(providerDescriptor);
+                        yield return CreateProvider<T>(providerDescriptor);
                     }
                 }
             }
@@ -182,6 +158,175 @@ namespace CommonProvider.Data
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+
+        #region Helpers
+
+        /// <summary>
+        /// Creates a Provider based on the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type to cast the provider to.</typeparam>
+        /// <param name="providerType">The type of provider.</param>
+        /// <returns>The created Provider.</returns>
+        protected T CreateProvider<T>(IProviderDescriptor providerDescriptor) where T : IProvider
+        {
+            try
+            {
+                if (providerDescriptor == null)
+                {
+                    throw new ArgumentNullException("providerDescriptor");
+                }
+
+                Type type = typeof(T);
+
+                if (!type.IsAssignableFrom(providerDescriptor.ProviderType))
+                {
+                    throw new CreateProviderException(
+                                            string.Format("{0} should be assignable from {1}",
+                                            type.Name,
+                                            providerDescriptor.ProviderType.Name
+                                            ));
+                }
+
+                var instance = GenericMethodInvoker.Invoke(
+                                            this,
+                                            "Create",
+                                            providerDescriptor.ProviderType,
+                                            new object[] { },
+                                            BindingFlags.NonPublic | BindingFlags.Instance
+                                            );
+
+                if (instance == null)
+                {
+                    throw new CreateProviderException(
+                        string.Format(
+                        "Could not create instance of type {0}. If you've got a Provider " +
+                        "implementation that exposes constructor arguments then please consider " +
+                        "using any of the existing dependency resolvers or write your " +
+                        "own implementation(see documentation for details)",
+                        providerDescriptor.ProviderType.Name));
+                }
+
+                var provider = (IProvider)instance;
+                provider.Group = providerDescriptor.ProviderGroup;
+                provider.Name = providerDescriptor.ProviderName;
+                provider.Settings = providerDescriptor.ProviderSettings;
+
+                return (T)instance;
+            }
+            catch (Exception ex)
+            {
+                if (!(ex is CreateProviderException))
+                {
+                    throw new CreateProviderException(
+                        "Error creating provider",
+                        ex);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        protected T Create<T>() where T : IProvider
+        {
+            var dependencyResolver = DependencyResolverService.GetResolver();
+            return dependencyResolver.Resolve<T>();
+        }
+
+        #endregion
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Represents a list of Providers.
+    /// </summary>
+    public class ProviderList : ProviderList<IProvider>, IProviderList
+    {
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of Providers with the specified provider descriptors. 
+        /// </summary>
+        /// <param name="providerDescriptors">A collection of provider descriptors that holds 
+        /// information regarding all loaded providers.</param>
+        public ProviderList(IEnumerable<IProviderDescriptor> providerDescriptors)
+            : base(providerDescriptors)
+        {
+        }
+
+        #endregion
+
+        #region Indexers
+
+        /// <summary>
+        /// Gets the provider with the specified name and type.
+        /// </summary>
+        /// <param name="providerName">The name of the provider.</param>
+        /// <param name="type">The type of provider.</param>
+        /// <returns>The matching provider.</returns>
+        public dynamic this[string providerName, Type type]
+        {
+            get
+            {
+                return GenericMethodInvoker.Invoke(
+                    this,
+                    "ByName",
+                    type,
+                    new object[] { providerName },
+                    BindingFlags.Public | BindingFlags.Instance
+                    );
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Gets all providers of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of the providers to get.</typeparam>
+        /// <returns>The matching providers.</returns>
+        public IProviderList<T> All<T>() where T : IProvider
+        {
+            return new ProviderList<T>(ProviderDescriptors);
+        }
+
+        /// <summary>
+        /// Gets all providers of the specified type and group.
+        /// </summary>
+        /// <typeparam name="T">The type of the providers.</typeparam>
+        /// <param name="groupName">The group of the providers.</param>
+        /// <returns>The matching providers.</returns>
+        public IProviderList<T> ByGroup<T>(string groupName) where T : IProvider
+        {
+            var providers =
+                All<T>().Where(x =>
+                    x.Group.Equals(groupName,
+                    StringComparison.OrdinalIgnoreCase))
+                    .ToProviderList();
+
+            return providers;
+        }
+
+        /// <summary>
+        /// Gets the provider with the specified name and type.
+        /// </summary>
+        /// <typeparam name="T">The type of the provider.</typeparam>
+        /// <param name="providerName">The name of the provider.</param>
+        /// <returns>The matching provider.</returns>
+        public T ByName<T>(string providerName) where T : IProvider
+        {
+            var provider =
+                All<T>().Where(x =>
+                    x.Name.Equals(providerName,
+                    StringComparison.OrdinalIgnoreCase))
+                    .SingleOrDefault();
+
+            return provider;
         }
 
         #endregion
