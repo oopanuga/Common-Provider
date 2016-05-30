@@ -97,7 +97,7 @@ namespace CommonProvider.Data
         /// <summary>
         /// Creates a Simple Provider based on the specified type.
         /// </summary>
-        /// <typeparam name="T">The type to cast the simple provider to.</typeparam>
+        /// <typeparam name="T">The type of provider to create.</typeparam>
         /// <param name="providerType">The type of simple provider.</param>
         /// <returns>The created Simple Provider.</returns>
         protected T CreateSimpleProvider<T>(Type providerType) where T : ISimpleProvider

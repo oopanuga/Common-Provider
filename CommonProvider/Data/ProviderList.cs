@@ -165,9 +165,13 @@ namespace CommonProvider.Data
         /// <summary>
         /// Creates a Provider based on the specified type.
         /// </summary>
-        /// <typeparam name="T">The type to cast the provider to.</typeparam>
-        /// <param name="providerType">The type of provider.</param>
-        /// <returns>The created Provider.</returns>
+        /// <typeparam name="T">The type of provider to create.</typeparam>
+        /// <param name="providerDescriptor">The provider descriptor.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">providerDescriptor</exception>
+        /// <exception cref="CreateProviderException">
+        /// Error creating provider
+        /// </exception>
         protected T CreateProvider<T>(IProviderDescriptor providerDescriptor) where T : IProvider
         {
             try
