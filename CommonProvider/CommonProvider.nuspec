@@ -8,8 +8,8 @@
     <projectUrl>https://github.com/oopanuga/common-provider</projectUrl>
     <licenseUrl>https://github.com/oopanuga/common-provider/blob/master/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>CommonProvider is a simple library built to give you an easy and consistent way of accessing your providers/strategies</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <description>CommonProvider is a simple library that gives you an easy and consistent way of loading and accessing your providers/strategies.</description>
+    <releaseNotes>https://github.com/oopanuga/common-provider/blob/master/RELEASE-NOTES.txt</releaseNotes>
     <copyright>Copyright 2015 CommonProvider</copyright>
     <summary />
     <language>en-US</language>

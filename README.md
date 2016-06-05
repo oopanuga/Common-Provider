@@ -1,16 +1,16 @@
 # CommonProvider
 
-CommonProvider is a simple library built to give you an easy and consistent way of loading and accessing your providers (Provider model/pattern) or strategies (Strategy pattern). These really similar patterns promote loose coupling and enables extensibility in your applications.
+CommonProvider is a simple library that gives you an easy and consistent way of loading and accessing your providers/strategies. The provider/strategy pattern promotes loose coupling and enables extensibility in your applications.
 
 ### Key Features
 Some key features of CommonProvider are,
 
 1. Simple and consistent way of accessing providers.
-2. Get provider meta data/settings from different config sources. Xml config source currently supported.
-3. Support for Zero configuration providers. Load these from an assembly in a specified directory.
+2. Get provider meta data/settings from different config sources. Xml config source currently supported, can write your own custom config source.
+3. Support for zero configuration providers. Load these from assemblies in a specified directory.
 4. Dependency resolution via IOC containers e.g. Unity, Castle etc.
 5. Support for simple and complex (serialized) provider settings. 
-6. Uses data parsers to parse/deserialize complex settings.
+6. Use data parsers to parse/deserialize complex settings.
 7. Various extension points.
 
 ### Key Extension Points
@@ -26,9 +26,12 @@ CommonProvider has various extension points but the key ones are,
 PM> Install-Package CommonProvider
 ```
 
+### Release Notes
+Release notes can be found [here](https://github.com/oopanuga/common-provider/blob/master/RELEASE-NOTES.txt)
+
 ### Using CommonProvider
 
-Implement either the IProvider (requires configuration) or ISimpleProvider (doesn't require configuration) interface
+Implement either the IProvider (requires configuration) or IZeroConfigProvider (doesn't require configuration) interface
 ```c#
 public abstract class SmsProviderBase : IProvider
 {
@@ -63,8 +66,8 @@ Config setup for CommonProvider (not required for ISimpleProvider implementation
 <commonProvider>
     <!--Define your types here-->
     <types>
-      <add name="NexmoProvider" type="CommonProvider.Example.Providers.NexmoSmsProvider, CommonProvider.Example"/>
-      <add name="TwilioProvider" type="CommonProvider.Example.Providers.TwilioSmsProvider,CommonProvider.Example"/>
+      <add name="NexmoProvider" type="CommonProvider.Example.Lib.Providers.NexmoSmsProvider, CommonProvider.Example.Lib"/>
+      <add name="TwilioProvider" type="CommonProvider.Example.Lib.Providers.TwilioSmsProvider, CommonProvider.Example.Lib"/>
       <add name="PipeDelimitedDataParser" type="CommonProvider.Data.PipeDelimitedDataParser, CommonProvider"/>
     </types>
     <!--Define provider global settings here-->
@@ -109,5 +112,4 @@ Get global setting
 var message = providerManager.Settings.Get<Message>("Message");
 ```
 
-
-More detailed examples [here](https://github.com/oopanuga/common-provider/tree/master/Examples).
+More detailed examples [here](https://github.com/oopanuga/common-provider/tree/master/Examples)
