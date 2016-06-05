@@ -28,7 +28,7 @@ namespace CommonProvider.Example
 
             var message = providerManager.Settings.Get<Message>("Message");
 
-            foreach (SmsProviderBase smsProvider in smsProviders)
+            foreach (var smsProvider in smsProviders)
             {
                 var result = smsProvider.SendSms(message);
                 Console.WriteLine(result);
@@ -50,7 +50,7 @@ namespace CommonProvider.Example
                 PhoneNumbers = "1010101010,2020202020,3030303030"
             };
 
-            foreach (ISmsZeroConfigProvider smsProvider in smsProviders)
+            foreach (var smsProvider in smsProviders)
             {
                 var result = smsProvider.SendSms(message);
                 Console.WriteLine(result);
