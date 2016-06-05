@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>CommonProvider is a simple library that gives you an easy and consistent way of loading and accessing your providers/strategies.</description>
     <releaseNotes>https://github.com/oopanuga/common-provider/blob/master/RELEASE-NOTES.txt</releaseNotes>
-    <copyright>Copyright 2015 CommonProvider</copyright>
+    <copyright>Copyright 2016 CommonProvider</copyright>
     <summary />
     <language>en-US</language>
     <tags>provider pattern strategy service extension extensibility</tags>
