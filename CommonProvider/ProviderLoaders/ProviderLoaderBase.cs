@@ -7,7 +7,7 @@ namespace CommonProvider.ProviderLoaders
     /// <summary>
     /// Represents the base class for a Provider Loader.
     /// </summary>
-    public abstract class ConfigProviderLoaderBase
+    public abstract class ProviderLoaderBase
     {
         /// <summary>
         /// Loads provider information/meta data e.g. Type, Name etc. 

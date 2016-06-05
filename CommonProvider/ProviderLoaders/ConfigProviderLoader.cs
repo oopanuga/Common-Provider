@@ -7,11 +7,11 @@ using CommonProvider.Data;
 namespace CommonProvider.ProviderLoaders
 {
     /// <summary>
-    /// Represents an implementation of ConfigProviderLoaderBase that retrieves provider 
+    /// Represents an implementation of ProviderLoaderBase that retrieves provider 
     /// information from a configuration file. The Config Provider Loader requires 
     /// that information regarding the providers be pre-configured before loading.
     /// </summary>
-    public class ConfigProviderLoader : ConfigProviderLoaderBase
+    public class ConfigProviderLoader : ProviderLoaderBase
     {
         private readonly ProviderConfigSection _configSection;
         private const string SectionName = "commonProvider";
