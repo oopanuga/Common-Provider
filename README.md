@@ -6,8 +6,8 @@ CommonProvider is a simple library that gives you an easy and consistent way of 
 Some key features of CommonProvider are,
 
 1. Simple and consistent way of accessing providers.
-2. Get provider meta data/settings from different config sources. Xml config source currently supported, can write your own custom config source.
-3. Support for zero configuration providers. Load these from assemblies in a specified directory.
+2. Get provider meta data/settings from different config sources. Xml config source currently supported.
+3. Support for zero configuration providers.
 4. Dependency resolution via IOC containers e.g. Unity, Castle etc.
 5. Support for simple and complex (serialized) provider settings. 
 6. Use data parsers to parse/deserialize complex settings.
