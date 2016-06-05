@@ -34,7 +34,7 @@ namespace CommonProvider
         /// Initializes an instance of ProviderManager using the specified provider loader. 
         /// </summary>
         /// <param name="providerLoader">The provider loader to use in loading the providers.</param>
-        public ProviderManager(ConfigProviderLoaderBase providerLoader)
+        public ProviderManager(ProviderLoaderBase providerLoader)
         {
             if (providerLoader == null)
             {

@@ -1,6 +1,5 @@
 ﻿using CommonProvider.ProviderLoaders;
 using NUnit.Framework;
-using Rhino.Mocks;
 using System.Linq;
 using CommonProvider.Configuration;
 
