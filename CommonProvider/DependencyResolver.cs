@@ -23,6 +23,7 @@ namespace CommonProvider
     public class DependencyResolver : IDependencyResolver
     {
         static IDependencyResolver _dependencyResolver;
+        static IDependencyResolver _defaultDependencyResolver;
 
         /// <summary>
         /// The main constructor for DependencyResolver.
@@ -75,7 +76,8 @@ namespace CommonProvider
                     return _dependencyResolver;
                 else
                 {
-                    return new DependencyResolver();
+                    return _defaultDependencyResolver ?? 
+                        (_defaultDependencyResolver = new DependencyResolver());
                 }
             }
         }
