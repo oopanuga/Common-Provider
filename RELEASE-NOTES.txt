@@ -1,0 +1,34 @@
+Version 3.0.0
+- Renamed IProviders to IProviderList and ISimpleProviders to IZeroConfigProviderList
+- Renamed PipedDataParse to PipeDelimitedDataParser and changed namespace
+- Got rid of ProvidersFactory and SimpleProvidersFactory
+- Removed ProviderManger constructor that takes a ProvidersFactory 
+- Removed SimpleProviderManger constructor that takes a SimpleProvidersFactory 
+- Removed DependencyResolverService class and moved functionality into DependencyResolver class
+- Moved DependencyResolver class to another namespace
+- Updated only constructor in SimpleProviderManager class to take assemblyDirectory parameter
+- Renamed SimpleProviderManager to ZeroConfigProviderManager
+- Renamed ISimpleProvider to IZeroConfigProvider
+- Renamed DirectoryConfigLoader to ProviderTypeLoader
+- Renamed ProviderLoaderBase to ProviderConfigSource and moved to different namespace
+- Renamed ConfigProviderLoader to XmlProviderConfigSource and moved to different namespace
+- Added default constructor to ProviderManager class that internally uses an XmlProviderConfigSource
+- Applied changes to Tests and Example project accordingly
+- Added MIT License
+- Did general refactoring
+
+Version 2.0.4
+- Fixed versioning issue
+
+Version 2.0.3
+- Refactored code and renamed some bits
+- Made IProviderList and ISimpleProviderList covariant
+
+Version 2.0.2
+- Implemented IEnumerable in Providers and SimpleProviders classes
+
+Version 2.0.1
+- Added support for .Net Framework 4.0. Currently supported .Net Framework versions are 4.0 and 4.5.
+
+Version 2.0.0
+- Added support for Simple Providers (zero configuration providers)
