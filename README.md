@@ -6,18 +6,17 @@ CommonProvider is a simple library built to give you an easy and consistent way 
 Some key features of CommonProvider are,
 
 1. Simple and consistent way of accessing providers.
-2. Different provider load options,
-    1. Load providers and settings based on definitions in a config file.
-    2. Load providers from a file directory.
-3. Dependency resolution via IOC containers e.g. Unity, Castle etc.
-4. Support for Provider settings with the config provider load option. Settings could be simple or complex (serialized objects).
-5. Uses data parsers to parse/deserialize complex settings.
-6. Various extension points.
+2. Get provider meta data/settings from different config sources. Xml config source currently supported.
+3. Support for Zero configuration providers. Load these from an assembly in a specified directory.
+4. Dependency resolution via IOC containers e.g. Unity, Castle etc.
+5. Support for simple and complex (serialized) provider settings. 
+6. Uses data parsers to parse/deserialize complex settings.
+7. Various extension points.
 
 ### Key Extension Points
 CommonProvider has various extension points but the key ones are,
 
-1. Write custom provider loaders.
+1. Write custom provider configuration sources.
 2. Write custom dependency resolvers.
 3. Write custom data parsers for dealing with complex settings.
 
@@ -58,7 +57,7 @@ public class NexmoSmsProvider : SmsProviderBase
 Config setup for CommonProvider (not required for ISimpleProvider implementation)
 ```xml
 <configSections>
-    <section name="commonProvider" type="CommonProvider.Configuration.ProviderConfigSection, CommonProvider"/>
+    <section name="commonProvider" type="CommonProvider.ConfigSources.Xml.Configuration.ProviderConfigSection, CommonProvider"/>
 </configSections>
 
 <commonProvider>
@@ -66,23 +65,23 @@ Config setup for CommonProvider (not required for ISimpleProvider implementation
     <types>
       <add name="NexmoProvider" type="CommonProvider.Example.Providers.NexmoSmsProvider, CommonProvider.Example"/>
       <add name="TwilioProvider" type="CommonProvider.Example.Providers.TwilioSmsProvider,CommonProvider.Example"/>
-      <add name="PipedDataParser" type="CommonProvider.Data.Parsers.PipedDataParser, CommonProvider"/>
+      <add name="PipeDelimitedDataParser" type="CommonProvider.Data.PipeDelimitedDataParser, CommonProvider"/>
     </types>
     <!--Define provider global settings here-->
-    <settings dataParserType="PipedDataParser">
+    <settings dataParserType="PipeDelimitedDataParser">
       <add key="Message" value="sender:007|text:Hello World!!!|phoneNumbers:1010101010,2020202020,3030303030"/>
     </settings>
     <!--Define providers here-->
     <providers>
       <provider name="Nexmo" enabled="true" type="NexmoProvider" group="">
         <settings>
-          <add key="Endpoint" value="http://www.nexmo.com/sendsms"/>
+          <add key="Endpoint" value="http://www.nexmo.test/sendsms"/>
           <add key="ApiKey" value="FakeApiKey"/>
         </settings>
       </provider>
       <provider name="Twilio" enabled="true" type="TwilioProvider" group="">
         <settings>
-          <add key="Endpoint" value="http://www.twilio.com/sendsms"/>
+          <add key="Endpoint" value="http://www.twilio.test/sendsms"/>
           <add key="ApiKey" value="FakeApiKey"/>
         </settings>
       </provider>
@@ -92,7 +91,7 @@ Config setup for CommonProvider (not required for ISimpleProvider implementation
 
 Create Provider Manager
 ```c#
-var providerManager = new ProviderManager(new ConfigProviderLoader(new ProviderConfigurationManager()));
+var providerManager = new ProviderManager(new XmlProviderConfigSource());
 ```
 
 Get Provider
