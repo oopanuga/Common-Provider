@@ -51,15 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigProviderLoaderTests.cs" />
-    <Compile Include="DirectoryProviderLoaderTests.cs" />
+    <Compile Include="ZeroConfigProviderLoaderTests.cs" />
     <Compile Include="ProviderDescriptorTests.cs" />
-    <Compile Include="SettingsTests.cs">
+    <Compile Include="ProviderSettingsTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TestClasses\BarSimpleProvider.cs" />
-    <Compile Include="TestClasses\FooSimpleProvider.cs" />
-    <Compile Include="TestClasses\IBarSimpleProvider.cs" />
-    <Compile Include="TestClasses\IFooSimpleProvider.cs" />
+    <Compile Include="TestClasses\BarZeroConfigProvider.cs" />
+    <Compile Include="TestClasses\FooZeroConfigProvider.cs" />
+    <Compile Include="TestClasses\IBarZeroConfigProvider.cs" />
+    <Compile Include="TestClasses\IFooZeroConfigProvider.cs" />
     <Compile Include="TestClasses\IUser.cs" />
     <Compile Include="TestClasses\User.cs" />
     <Compile Include="TestClasses\IBarProvider.cs" />

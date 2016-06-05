@@ -5,6 +5,23 @@ using System.Linq;
 namespace CommonProvider.Data
 {
     /// <summary>
+    /// Represents the base interface for ProviderData. It holds 
+    /// information regarding all loaded providers.
+    /// </summary>
+    public interface IProviderData
+    {
+        /// <summary>
+        /// Gets provider wide settings.
+        /// </summary>
+        IProviderSettings Settings { get; }
+
+        /// <summary>
+        /// Gets the meta data of a loaded Provider e.g. Name, Type etc.
+        /// </summary>
+        IEnumerable<IProviderDescriptor> ProviderDescriptors { get; }
+    }
+
+    /// <summary>
     /// Represents the default implementation of IProviderData. It holds information 
     /// regarding all loaded providers.
     /// </summary>
@@ -18,7 +35,7 @@ namespace CommonProvider.Data
         /// loaded providers.</param>
         /// <param name="settings">The provider wide settings.</param>
         public ProviderData(
-            IEnumerable<IProviderDescriptor> providerDescriptors, ISettings settings)
+            IEnumerable<IProviderDescriptor> providerDescriptors, IProviderSettings settings)
         {
             if (providerDescriptors == null || !providerDescriptors.Any())
             {
@@ -32,7 +49,7 @@ namespace CommonProvider.Data
         /// <summary>
         /// Gets provider wide settings.
         /// </summary>
-        public ISettings Settings { get; private set; }
+        public IProviderSettings Settings { get; private set; }
 
         /// <summary>
         /// Gets information regarding all loaded providers.

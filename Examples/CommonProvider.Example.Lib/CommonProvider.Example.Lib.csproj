@@ -4,19 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7EB477D3-A1AB-4BC6-A053-A380A7B7859A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{36ED49E3-BD75-4ABA-9F45-0690C4D90AB5}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CommonProvider.Example</RootNamespace>
-    <AssemblyName>CommonProvider.Example</AssemblyName>
+    <RootNamespace>CommonProvider.Example.Lib</RootNamespace>
+    <AssemblyName>CommonProvider.Example.Lib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -44,22 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <Compile Include="Providers\NexmoSmsProvider.cs" />
+    <Compile Include="Providers\SmsProviderBase.cs" />
+    <Compile Include="Providers\TwilioSmsProvider.cs" />
+    <Compile Include="ZeroConfigProviders\ISmsZeroConfigProvider.cs" />
+    <Compile Include="ZeroConfigProviders\NexmoSmsZeroConfigProvider.cs" />
+    <Compile Include="ZeroConfigProviders\TwilioSmsZeroConfigProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CommonProvider\CommonProvider.csproj">
-      <Project>{a1387b8d-1c93-42ef-bf76-1e34a97ab5f3}</Project>
+      <Project>{A1387B8D-1C93-42EF-BF76-1E34A97AB5F3}</Project>
       <Name>CommonProvider</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CommonProvider.Example.Lib\CommonProvider.Example.Lib.csproj">
-      <Project>{36ed49e3-bd75-4aba-9f45-0690c4d90ab5}</Project>
-      <Name>CommonProvider.Example.Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

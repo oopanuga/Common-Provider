@@ -1,5 +1,4 @@
 ﻿using CommonProvider.Data;
-using CommonProvider.Factories;
 using CommonProvider.ProviderLoaders;
 using CommonProvider.Tests.TestClasses;
 using NUnit.Framework;
@@ -16,25 +15,23 @@ namespace CommonProvider.Tests
         public class Constructors
         {
             [Test]
-            public void Should_load_providers_and_settings_when_providers_loaders_and_providers_factory_are_specified()
+            public void Should_load_providers_and_settings_when_a_provider_loader_and_a_provider_factory_is_specified()
             {
-                var providerDesccriptors = new List<IProviderDescriptor>();
-                var settings = MockRepository.GenerateMock<ISettings>();
-                var providers = MockRepository.GenerateMock<IProviders>();
+                var providerDesccriptors = new List<IProviderDescriptor>
+                {
+                    MockRepository.GenerateMock<IProviderDescriptor>()
+                };
+
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var providerData = MockRepository.GenerateMock<IProviderData>();
                 providerData.Stub(x => x.ProviderDescriptors).Return(providerDesccriptors);
                 providerData.Stub(x => x.Settings).Return(settings);
 
-                var providerLoader = MockRepository.GenerateMock<ProviderLoaderBase>();
+                var providerLoader = MockRepository.GenerateMock<ConfigProviderLoader>();
                 providerLoader.Stub(x => x.Load()).Return(providerData);
 
-                var providersFactory = MockRepository.GenerateMock<IProvidersFactory>();
-                providersFactory.Stub(x => x.Create(providerDesccriptors)).Return(providers);
-
-                var providerManager = new ProviderManager(providerLoader, providersFactory);
-
-                providersFactory.AssertWasCalled(x => x.Create(providerDesccriptors));
+                var providerManager = new ProviderManager(providerLoader);
 
                 Assert.That(providerManager.Providers, Is.Not.Null);
                 Assert.That(providerManager.Settings, Is.Not.Null);
@@ -42,50 +39,25 @@ namespace CommonProvider.Tests
 
             [Test]
             [ExpectedException(typeof(ArgumentNullException))]
-            public void Should_throw_exception_when_provider_loaders_is_null()
+            public void Should_throw_exception_when_provider_loader_is_null()
             {
                 var providerDesccriptors = new List<IProviderDescriptor>();
-                var settings = MockRepository.GenerateMock<ISettings>();
-                var providers = MockRepository.GenerateMock<IProviders>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var providerData = MockRepository.GenerateMock<IProviderData>();
                 providerData.Stub(x => x.ProviderDescriptors).Return(providerDesccriptors);
                 providerData.Stub(x => x.Settings).Return(settings);
 
-                ProviderLoaderBase providerLoader = null;
-
-                var providersFactory = MockRepository.GenerateMock<IProvidersFactory>();
-                providersFactory.Stub(x => x.Create(providerDesccriptors)).Return(providers);
-
-                var providerManager = new ProviderManager(providerLoader, providersFactory);
+                ConfigProviderLoader providerLoader = null;
+                new ProviderManager(providerLoader);
             }
 
             [Test]
-            [ExpectedException(typeof(ArgumentNullException))]
-            public void Should_throw_exception_when_providers_factory_is_null()
-            {
-                var providerDesccriptors = new List<IProviderDescriptor>();
-                var settings = MockRepository.GenerateMock<ISettings>();
-                var providers = MockRepository.GenerateMock<IProviders>();
-
-                var providerData = MockRepository.GenerateMock<IProviderData>();
-                providerData.Stub(x => x.ProviderDescriptors).Return(providerDesccriptors);
-                providerData.Stub(x => x.Settings).Return(settings);
-
-                var providerLoader = MockRepository.GenerateMock<ProviderLoaderBase>();
-                providerLoader.Stub(x => x.Load()).Return(providerData);
-
-                IProvidersFactory providersFactory = null;
-
-                var providerManager = new ProviderManager(providerLoader, providersFactory);
-            }
-
-            [Test]
-            public void Should_load_providers_using_the_default_providers_fatcory_when_only_provider_loaders_is_specified()
+            public void Should_load_providers_using_the_default_provider_fatcory_when_only_a_provider_loader_is_specified()
             {
                 var providerDesccriptors = new List<IProviderDescriptor>();
 
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
                 var fooProviderType = typeof(FooProvider);
@@ -103,7 +75,7 @@ namespace CommonProvider.Tests
                 providerData.Stub(x => x.ProviderDescriptors).Return(providerDesccriptors);
                 providerData.Stub(x => x.Settings).Return(settings);
 
-                var providerLoader = MockRepository.GenerateMock<ProviderLoaderBase>();
+                var providerLoader = MockRepository.GenerateMock<ConfigProviderLoader>();
                 providerLoader.Stub(x => x.Load()).Return(providerData);
 
                 var providerManager = new ProviderManager(providerLoader);

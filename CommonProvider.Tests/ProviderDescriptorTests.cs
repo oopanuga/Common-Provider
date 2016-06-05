@@ -4,6 +4,7 @@ using CommonProvider.Tests.TestClasses;
 using NUnit.Framework;
 using Rhino.Mocks;
 using System;
+
 namespace CommonProvider.Tests
 {
     [TestFixture]
@@ -15,7 +16,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_initialise_provider_descriptor()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
                 var fooProviderType = typeof(FooProvider);
@@ -40,7 +41,7 @@ namespace CommonProvider.Tests
             [ExpectedException(typeof(ArgumentNullException))]
             public void Should_throw_exception_when_provider_type_not_set()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
                 Type fooProviderType = null;
@@ -58,7 +59,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_not_throw_exception_when_provider_name_not_set()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
                 var fooProviderName = "";
                 var fooProviderGroup = "FooProviders";
                 var fooProviderType = typeof(FooProvider);
@@ -82,7 +83,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_not_throw_exception_when_provider_group_not_set()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "";
                 var fooProviderType = typeof(FooProvider);
@@ -106,7 +107,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_not_throw_exception_when_settings_not_set()
             {
-                ISettings settings = null;
+                IProviderSettings settings = null;
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
                 var fooProviderType = typeof(FooProvider);

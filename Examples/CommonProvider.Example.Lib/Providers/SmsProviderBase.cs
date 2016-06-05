@@ -1,18 +1,15 @@
 ﻿using CommonProvider.Data;
 
-namespace CommonProvider.Tests.TestClasses
+namespace CommonProvider.Example.Lib.Providers
 {
-    public class FooProvider : IFooProvider
+    public abstract class SmsProviderBase : IProvider
     {
-        public string WriteFoo()
-        {
-            return "";
-        }
-
         public string Name { get; set; }
 
         public IProviderSettings Settings { get; set; }
 
         public string Group { get; set; }
+
+        public abstract string SendSms(Message message);
     }
 }

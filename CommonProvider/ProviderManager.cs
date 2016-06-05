@@ -1,10 +1,26 @@
 ﻿using CommonProvider.Data;
-using CommonProvider.Factories;
 using CommonProvider.ProviderLoaders;
 using System;
 
 namespace CommonProvider
 {
+    /// <summary>
+    /// Represents the base interface for IProviderManager. This is 
+    /// the gateway to all providers and provider wide settings.
+    /// </summary>
+    public interface IProviderManager
+    {
+        /// <summary>
+        /// Gets the set of loaded providers.
+        /// </summary>
+        IProviderList Providers { get; }
+
+        /// <summary>
+        /// Gets all provider wide settings.
+        /// </summary>
+        IProviderSettings Settings { get; }
+    }
+
     /// <summary>
     /// Represents the default implementation of IProviderManager. 
     /// This is the gateway to all providers and provider wide 
@@ -15,42 +31,29 @@ namespace CommonProvider
         #region Constructors
 
         /// <summary>
-        /// Initializes an instance of ProviderManager using the specified 
-        /// provider loader and provider list factory.
+        /// Initializes an instance of ProviderManager using the specified provider loader. 
         /// </summary>
-        /// <param name="providerLoader">The provider loader to use in loading 
-        /// the providers.</param>
-        /// <param name="providersFactory">The Providers factory to use 
-        /// in creating the set of providers.</param>
-        public ProviderManager(ProviderLoaderBase providerLoader,
-            IProvidersFactory providersFactory)
+        /// <param name="providerLoader">The provider loader to use in loading the providers.</param>
+        public ProviderManager(ConfigProviderLoaderBase providerLoader)
         {
             if (providerLoader == null)
             {
                 throw new ArgumentNullException("providerLoader");
             }
 
-            if (providersFactory == null)
-            {
-                throw new ArgumentNullException("providersFactory");
-            }
-
             var providerData = providerLoader.Load();
-            Providers = providersFactory.Create(providerData.ProviderDescriptors);
+            Providers = new ProviderList(providerData.ProviderDescriptors);
             Settings = providerData.Settings;
         }
 
         /// <summary>
-        /// Initializes an instance of ProviderManager using the specified provider loader. 
-        /// It internally uses the default providers factory to create the provider list.
+        /// Initializes an instance of ProviderManager using the the default provider loader
+        /// which is the ConfigProviderLoader. 
         /// </summary>
-        /// <param name="providerLoader">The provider loader to use in loading the providers.</param>
-        public ProviderManager(ProviderLoaderBase providerLoader)
-            : this(providerLoader, new ProvidersFactory())
+        public ProviderManager():this(new ConfigProviderLoader())
         {
-
-        }
-
+        }  
+   
         #endregion
 
         #region Properties
@@ -58,12 +61,12 @@ namespace CommonProvider
         /// <summary>
         /// Gets the set of loaded providers.
         /// </summary>
-        public IProviders Providers { get; private set; }
+        public IProviderList Providers { get; private set; }
 
         /// <summary>
         /// Gets all provider wide settings.
         /// </summary>
-        public ISettings Settings { get; private set; }
+        public IProviderSettings Settings { get; private set; }
 
         #endregion
     }
