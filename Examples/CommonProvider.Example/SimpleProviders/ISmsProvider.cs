@@ -1,5 +1,5 @@
 ﻿
-namespace CommonProvider.Example.SimpleProvider.Lib.Providers
+namespace CommonProvider.Example.SimpleProviders
 {
     public interface ISmsProvider : ISimpleProvider
     {

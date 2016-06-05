@@ -65,10 +65,7 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var providerConfigurationManager = MockRepository.GenerateMock<IProviderConfigurationManager>();
-                providerConfigurationManager.Stub(x => x.GetSection(configSectionName)).Return(configSection);
-
-                var configProviderLoader = new ConfigProviderLoader(providerConfigurationManager);
+                var configProviderLoader = new ConfigProviderLoader(configSection);
                 var providerData = configProviderLoader.Load();
 
                 Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
@@ -131,10 +128,7 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var providerConfigurationManager = MockRepository.GenerateMock<IProviderConfigurationManager>();
-                providerConfigurationManager.Stub(x => x.GetSection(configSectionName)).Return(configSection);
-
-                var configProviderLoader = new ConfigProviderLoader(providerConfigurationManager);
+                var configProviderLoader = new ConfigProviderLoader(configSection);
                 var providerData = configProviderLoader.Load();
 
                 Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
@@ -197,10 +191,7 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var providerConfigurationManager = MockRepository.GenerateMock<IProviderConfigurationManager>();
-                providerConfigurationManager.Stub(x => x.GetSection(configSectionName)).Return(configSection);
-
-                var configProviderLoader = new ConfigProviderLoader(providerConfigurationManager);
+                var configProviderLoader = new ConfigProviderLoader(configSection);
                 var providerData = configProviderLoader.Load();
 
                 Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
@@ -262,10 +253,7 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var providerConfigurationManager = MockRepository.GenerateMock<IProviderConfigurationManager>();
-                providerConfigurationManager.Stub(x => x.GetSection(configSectionName)).Return(configSection);
-
-                var configProviderLoader = new ConfigProviderLoader(providerConfigurationManager);
+                var configProviderLoader = new ConfigProviderLoader(configSection);
                 var providerData = configProviderLoader.Load();
 
                 Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
@@ -313,10 +301,7 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var providerConfigurationManager = MockRepository.GenerateMock<IProviderConfigurationManager>();
-                providerConfigurationManager.Stub(x => x.GetSection(configSectionName)).Return(configSection);
-
-                var configProviderLoader = new ConfigProviderLoader(providerConfigurationManager);
+                var configProviderLoader = new ConfigProviderLoader(configSection);
                 var providerData = configProviderLoader.Load();
 
                 Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
@@ -358,10 +343,7 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var providerConfigurationManager = MockRepository.GenerateMock<IProviderConfigurationManager>();
-                providerConfigurationManager.Stub(x => x.GetSection(configSectionName)).Return(configSection);
-
-                var configProviderLoader = new ConfigProviderLoader(providerConfigurationManager);
+                var configProviderLoader = new ConfigProviderLoader(configSection);
                 var providerData = configProviderLoader.Load();
 
                 Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
@@ -402,10 +384,7 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var providerConfigurationManager = MockRepository.GenerateMock<IProviderConfigurationManager>();
-                providerConfigurationManager.Stub(x => x.GetSection(configSectionName)).Return(configSection);
-
-                var configProviderLoader = new ConfigProviderLoader(providerConfigurationManager);
+                var configProviderLoader = new ConfigProviderLoader(configSection);
                 var providerData = configProviderLoader.Load();
 
                 Assert.That(providerData.ProviderDescriptors, Is.Not.Null);

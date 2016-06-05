@@ -1,6 +1,6 @@
 ﻿namespace CommonProvider.Tests.TestClasses
 {
-    public interface IBarSimpleProvider : ISimpleProvider
+    public interface IBarZeroConfigProvider : IZeroConfigProvider
     {
         string WriteBar();
     }

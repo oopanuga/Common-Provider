@@ -6,15 +6,15 @@ using System.Linq;
 namespace CommonProvider.Tests
 {
     [TestFixture]
-    public class DirectoryProviderLoaderTests
+    public class ZeroConfigProviderLoaderTests
     {
-        [Category("DirectoryProviderLoaderTests.Load")]
+        [Category("ZeroConfigProviderLoader.Load")]
         public class Load
         {
             [Test]
-            public void Should_load_providers_from_classes_of_type_isimpleprovider()
+            public void Should_load_providers_from_classes_of_type_izeroconfigprovider()
             {
-                var loader = new DirectoryProviderLoader(Environment.CurrentDirectory);
+                var loader = new ZeroConfigProviderLoader(Environment.CurrentDirectory);
                 var providerTypes = loader.Load();
 
                 Assert.That(providerTypes.Count(), Is.EqualTo(2));
@@ -24,7 +24,7 @@ namespace CommonProvider.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void Should_throw_exception_when_assembly_directory_doesnt_exist()
             {
-                var loader = new DirectoryProviderLoader("z:\\somefakedirectory\\");
+                var loader = new ZeroConfigProviderLoader("z:\\somefakedirectory\\");
                 loader.Load();
             }
 
@@ -33,7 +33,7 @@ namespace CommonProvider.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void Should_throw_exception_when_assembly_directory_not_set(string assemblyDirectory)
             {
-                var loader = new DirectoryProviderLoader(assemblyDirectory);
+                var loader = new ZeroConfigProviderLoader(assemblyDirectory);
                 loader.Load();
             }
         }

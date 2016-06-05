@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CommonProvider.DependencyManagement;
 using CommonProvider.Exceptions;
 
 namespace CommonProvider.Data
@@ -235,8 +234,7 @@ namespace CommonProvider.Data
 
         protected T Create<T>() where T : IProvider
         {
-            var dependencyResolver = DependencyResolverService.GetResolver();
-            return dependencyResolver.Resolve<T>();
+            return DependencyResolver.Current.Resolve<T>();
         }
 
         #endregion

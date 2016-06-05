@@ -1,4 +1,6 @@
 ﻿
+using CommonProvider.Data;
+
 namespace CommonProvider.Tests.TestClasses
 {
     public class BarProvider : IBarProvider
@@ -10,7 +12,7 @@ namespace CommonProvider.Tests.TestClasses
 
         public string Name { get; set; }
 
-        public Data.ISettings Settings { get; set; }
+        public IProviderSettings Settings { get; set; }
 
         public string Group { get; set; }
     }

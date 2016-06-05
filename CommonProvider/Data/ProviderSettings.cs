@@ -1,6 +1,4 @@
-﻿using CommonProvider.Data.Parsers;
-using CommonProvider.DependencyManagement;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +7,7 @@ namespace CommonProvider.Data
     /// <summary>
     /// Represents the base interface for a set of Settings.
     /// </summary>
-    public interface ISettings
+    public interface IProviderSettings
     {
         /// <summary>
         /// Gets a value indicating if a setting name exists or not.
@@ -63,7 +61,7 @@ namespace CommonProvider.Data
     /// <summary>
     /// Represents the default implementation of ISettings. It holds a set of settings.
     /// </summary>
-    public class Settings : ISettings
+    public class ProviderSettings : IProviderSettings
     {
         readonly Dictionary<string, string> _settings;
         readonly string _dataParserType;
@@ -76,7 +74,7 @@ namespace CommonProvider.Data
         /// <param name="settings">A dictionary copy of the settings.</param>
         /// <param name="dataParserType">The data parser to use in parsing 
         /// strings of data to a specified type.</param>
-        public Settings(Dictionary<string, string> settings, string dataParserType)
+        public ProviderSettings(Dictionary<string, string> settings, string dataParserType)
         {
             if (settings == null || settings.Count == 0)
             {
@@ -178,7 +176,7 @@ namespace CommonProvider.Data
                 {
                     try
                     {
-                        return new PipeDataParser().Parse<T>(setting);
+                        return new PipeDelimitedDataParser().Parse<T>(setting);
                     }
                     catch (Exception ex)
                     {
@@ -190,9 +188,8 @@ namespace CommonProvider.Data
                 }
                 else
                 {
-                    var resolver = DependencyResolverService.GetResolver();
                     var parser = (IDataParser)GenericMethodInvoker.Invoke(
-                                resolver,
+                                DependencyResolver.Current,
                                 "Resolve",
                                 Type.GetType(_dataParserType),
                                 new object[] { }

@@ -7,24 +7,27 @@ using CommonProvider.Data;
 namespace CommonProvider.ProviderLoaders
 {
     /// <summary>
-    /// Represents an implementation of ProviderLoaderBase that retrieves provider 
+    /// Represents an implementation of ConfigProviderLoaderBase that retrieves provider 
     /// information from a configuration file. The Config Provider Loader requires 
     /// that information regarding the providers be pre-configured before loading.
     /// </summary>
-    public class ConfigProviderLoader : ProviderLoaderBase
+    public class ConfigProviderLoader : ConfigProviderLoaderBase
     {
-        private readonly IProviderConfigurationManager _providerConfigurationManager;
+        private readonly ProviderConfigSection _configSection;
         private const string SectionName = "commonProvider";
 
         /// <summary>
-        /// Initializes an instance of ConfigProviderLoader using the specified
-        /// ProviderConfigurationManager
+        /// Initializes an instance of ConfigProviderLoader
         /// </summary>
-        /// <param name="providerConfigurationManager">The provider configuration manager.</param>
-        public ConfigProviderLoader(
-            IProviderConfigurationManager providerConfigurationManager)
+        public ConfigProviderLoader()
         {
-            _providerConfigurationManager = providerConfigurationManager;
+            _configSection = ConfigurationManager.GetSection(SectionName) as ProviderConfigSection;
+        }
+
+
+        internal ConfigProviderLoader(ProviderConfigSection configSection)
+        {
+            _configSection = configSection;
         }
 
         /// <summary>
@@ -33,10 +36,7 @@ namespace CommonProvider.ProviderLoaders
         /// <returns>The loaded providers data.</returns>
         protected override IProviderData PerformLoad()
         {
-            var configSection =
-                _providerConfigurationManager.GetSection(SectionName);
-
-            if (configSection == null)
+            if (_configSection == null)
             {
                 throw new ConfigurationErrorsException(
                     string.Format("Config section {0} not defined",
@@ -45,11 +45,11 @@ namespace CommonProvider.ProviderLoaders
 
             var providerDescriptors = new List<IProviderDescriptor>();
 
-            Settings generalSettings = null;
+            Data.ProviderSettings generalSettings = null;
             Dictionary<string, string> gs = null;
 
             // set general settings
-            foreach (ProviderSettingElement setting in configSection.Settings)
+            foreach (ProviderSettingElement setting in _configSection.Settings)
             {
                 if (gs == null)
                     gs = new Dictionary<string, string>();
@@ -60,21 +60,21 @@ namespace CommonProvider.ProviderLoaders
             if (gs != null)
             {
                 string dataParserType = string.Empty;
-                if (!string.IsNullOrEmpty(configSection.Settings.DataParserType))
+                if (!string.IsNullOrEmpty(_configSection.Settings.DataParserType))
                 {
-                    dataParserType = GetDataParserType(configSection,
-                        configSection.Settings.DataParserType);
+                    dataParserType = GetDataParserType(_configSection,
+                        _configSection.Settings.DataParserType);
                 }
 
-                generalSettings = new Settings(gs, dataParserType);
+                generalSettings = new Data.ProviderSettings(gs, dataParserType);
             }
 
-            foreach (ProviderElement providerElement in configSection.Providers)
+            foreach (ProviderElement providerElement in _configSection.Providers)
             {
                 if (!providerElement.IsEnabled) continue;
 
                 // get provider type
-                Type providerType = GetProviderType(configSection, providerElement);
+                Type providerType = GetProviderType(_configSection, providerElement);
                 if (!typeof(IProvider).IsAssignableFrom(providerType))
                 {
                     throw new ConfigurationErrorsException(
@@ -92,17 +92,17 @@ namespace CommonProvider.ProviderLoaders
                 }
 
                 // get complex data parser type
-                Settings providerSetting = null;
+                Data.ProviderSettings providerSetting = null;
                 if (ps != null)
                 {
                     string dataParserType = string.Empty;
                     if (!string.IsNullOrEmpty(providerElement.Settings.DataParserType))
                     {
-                        dataParserType = GetDataParserType(configSection,
+                        dataParserType = GetDataParserType(_configSection,
                             providerElement.Settings.DataParserType);
 
                     }
-                    providerSetting = new Settings(ps, dataParserType);
+                    providerSetting = new Data.ProviderSettings(ps, dataParserType);
                 }
 
                 providerDescriptors.Add(

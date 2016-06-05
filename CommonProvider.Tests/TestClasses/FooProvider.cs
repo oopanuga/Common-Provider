@@ -11,7 +11,7 @@ namespace CommonProvider.Tests.TestClasses
 
         public string Name { get; set; }
 
-        public ISettings Settings { get; set; }
+        public IProviderSettings Settings { get; set; }
 
         public string Group { get; set; }
     }

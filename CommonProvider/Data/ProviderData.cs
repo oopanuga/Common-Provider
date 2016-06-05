@@ -13,7 +13,7 @@ namespace CommonProvider.Data
         /// <summary>
         /// Gets provider wide settings.
         /// </summary>
-        ISettings Settings { get; }
+        IProviderSettings Settings { get; }
 
         /// <summary>
         /// Gets the meta data of a loaded Provider e.g. Name, Type etc.
@@ -35,7 +35,7 @@ namespace CommonProvider.Data
         /// loaded providers.</param>
         /// <param name="settings">The provider wide settings.</param>
         public ProviderData(
-            IEnumerable<IProviderDescriptor> providerDescriptors, ISettings settings)
+            IEnumerable<IProviderDescriptor> providerDescriptors, IProviderSettings settings)
         {
             if (providerDescriptors == null || !providerDescriptors.Any())
             {
@@ -49,7 +49,7 @@ namespace CommonProvider.Data
         /// <summary>
         /// Gets provider wide settings.
         /// </summary>
-        public ISettings Settings { get; private set; }
+        public IProviderSettings Settings { get; private set; }
 
         /// <summary>
         /// Gets information regarding all loaded providers.

@@ -6,6 +6,7 @@
     <authors>Oluwaseun Opanuga</authors>
     <owners>Oluwaseun Opanuga</owners>
     <projectUrl>https://github.com/oopanuga/common-provider</projectUrl>
+    <licenseUrl>https://github.com/oopanuga/common-provider/blob/master/LICENSE.txt</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>CommonProvider is a simple library built to give you an easy and consistent way of accessing your providers/strategies</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>

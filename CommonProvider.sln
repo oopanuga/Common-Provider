@@ -11,10 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonProvider.Example", "Examples\CommonProvider.Example\CommonProvider.Example.csproj", "{7EB477D3-A1AB-4BC6-A053-A380A7B7859A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonProvider.Example.SimpleProvider.Lib", "Examples\CommonProvider.Example.SimpleProvider.Lib\CommonProvider.Example.SimpleProvider.Lib.csproj", "{36ED49E3-BD75-4ABA-9F45-0690C4D90AB5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonProvider.Example.SimpleProvider", "Examples\CommonProvider.Example.SimpleProvider\CommonProvider.Example.SimpleProvider.csproj", "{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{BF681315-C6DE-4130-BA08-4AF4DE4AA1C6}"
 	ProjectSection(SolutionItems) = preProject
 		CommonProvider\build_solution.bat = CommonProvider\build_solution.bat
@@ -22,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{BF681315
 		StyleCop\RunStyleCop.msbuild = StyleCop\RunStyleCop.msbuild
 		StyleCop\StyleCop.xsl = StyleCop\StyleCop.xsl
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonProvider.Example.Lib", "Examples\CommonProvider.Example.Lib\CommonProvider.Example.Lib.csproj", "{36ED49E3-BD75-4ABA-9F45-0690C4D90AB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,18 +79,6 @@ Global
 		{36ED49E3-BD75-4ABA-9F45-0690C4D90AB5}.ReleaseNET40|Any CPU.Build.0 = Release|Any CPU
 		{36ED49E3-BD75-4ABA-9F45-0690C4D90AB5}.ReleaseNET45|Any CPU.ActiveCfg = Release|Any CPU
 		{36ED49E3-BD75-4ABA-9F45-0690C4D90AB5}.ReleaseNET45|Any CPU.Build.0 = Release|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.DebugNET40|Any CPU.ActiveCfg = Debug|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.DebugNET40|Any CPU.Build.0 = Debug|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.DebugNET45|Any CPU.ActiveCfg = Debug|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.DebugNET45|Any CPU.Build.0 = Debug|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.ReleaseNET40|Any CPU.ActiveCfg = Release|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.ReleaseNET40|Any CPU.Build.0 = Release|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.ReleaseNET45|Any CPU.ActiveCfg = Release|Any CPU
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3}.ReleaseNET45|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +86,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7EB477D3-A1AB-4BC6-A053-A380A7B7859A} = {02A564C5-A9A8-4EF2-90A7-CB47D735003B}
 		{36ED49E3-BD75-4ABA-9F45-0690C4D90AB5} = {02A564C5-A9A8-4EF2-90A7-CB47D735003B}
-		{5AB9856B-5C82-4FF2-95EC-8A5CEC2747A3} = {02A564C5-A9A8-4EF2-90A7-CB47D735003B}
 	EndGlobalSection
 EndGlobal

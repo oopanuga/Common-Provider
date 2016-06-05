@@ -8,7 +8,7 @@ using System.Reflection;
 namespace CommonProvider.Tests
 {
     [TestFixture]
-    public class SettingsTests
+    public class ProviderSettingsTests
     {
         [Category("Settings.Constructors")]
         public class Constructors
@@ -19,7 +19,7 @@ namespace CommonProvider.Tests
             {
                 var settingsAsDictionary = new Dictionary<string, string>();
 
-                var settings = new Settings(settingsAsDictionary, "");
+                new ProviderSettings(settingsAsDictionary, "");
             }
 
             [Test]
@@ -28,7 +28,7 @@ namespace CommonProvider.Tests
             {
                 Dictionary<string, string> settingsAsDictionary = null;
 
-                var settings = new Settings(settingsAsDictionary, "");
+                new ProviderSettings(settingsAsDictionary, "");
             }
 
             [Test]
@@ -43,7 +43,7 @@ namespace CommonProvider.Tests
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 Assert.That(settings.Get<string>("website"), Is.EqualTo(website));
             }
@@ -59,13 +59,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 if (settingType == typeof(string))
                 {
@@ -89,13 +89,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 settings.Get<string>(settingName);
             }
@@ -107,19 +107,19 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 var user = settings.Get<IUser>("user");
             }
 
             [Test]
-            public void Should_for_complex_types_use_default_parser_which_is_the_piped_data_parser_when_data_parser_not_specified()
+            public void Should_for_complex_types_use_default_parser_which_is_the_pipe_data_parser_when_data_parser_not_specified()
             {
                 string website = "http://www.johndoe.com";
                 int userId = 1;
@@ -130,7 +130,7 @@ namespace CommonProvider.Tests
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 var user = settings.Get<User>("user");
 
@@ -149,13 +149,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 if (settingType == typeof(string))
                 {
@@ -178,13 +178,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 var setting = settings[settingName, typeof(string)];
             }
@@ -196,19 +196,19 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 var user = settings["user", typeof(IUser)];
             }
 
             [Test]
-            public void Should_for_complex_types_use_default_parser_which_is_the_piped_data_parser_when_data_parser_not_specified()
+            public void Should_for_complex_types_use_default_parser_which_is_the_pipe_data_parser_when_data_parser_not_specified()
             {
                 string website = "http://www.johndoe.com";
                 int userId = 1;
@@ -219,7 +219,7 @@ namespace CommonProvider.Tests
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 var user = settings["user", typeof(User)];
 
@@ -238,13 +238,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 Assert.That(settings[settingName], Is.EqualTo(settingValue));
             }
@@ -257,13 +257,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 Assert.That(settings[settingName], Is.Null);
             }
@@ -280,7 +280,7 @@ namespace CommonProvider.Tests
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 var user = settings["user"];
 
@@ -297,13 +297,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 Assert.That(settings.Count, Is.EqualTo(2));
             }
@@ -318,13 +318,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 Assert.That(settings.Contains("user"), Is.True);
             }
@@ -335,13 +335,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 Assert.That(settings.Contains("somesetting"), Is.False);
             }
@@ -356,13 +356,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipeDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 User user;
                 var containsSettingName = settings.TryGet<User>("user", out user);
@@ -377,13 +377,13 @@ namespace CommonProvider.Tests
                 string website = "http://www.johndoe.com";
                 int userId = 1;
                 string userFullname = "John Doe";
-                string dataParserType = "CommonProvider.Data.Parsers.PipedDataParser, CommonProvider";
+                string dataParserType = "CommonProvider.Data.PipeDelimitedDataParser, CommonProvider";
 
                 var settingsAsDictionary = new Dictionary<string, string>();
                 settingsAsDictionary.Add("website", website);
                 settingsAsDictionary.Add("user", string.Format("id:{0}|name:{1}", userId, userFullname));
 
-                var settings = new Settings(settingsAsDictionary, dataParserType);
+                var settings = new ProviderSettings(settingsAsDictionary, dataParserType);
 
                 string invalidSetting;
                 var containsSettingName = settings.TryGet<string>("invalidsetting", out invalidSetting);

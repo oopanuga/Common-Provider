@@ -22,13 +22,13 @@ namespace CommonProvider.Tests
                     MockRepository.GenerateMock<IProviderDescriptor>()
                 };
 
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var providerData = MockRepository.GenerateMock<IProviderData>();
                 providerData.Stub(x => x.ProviderDescriptors).Return(providerDesccriptors);
                 providerData.Stub(x => x.Settings).Return(settings);
 
-                var providerLoader = MockRepository.GenerateMock<ProviderLoaderBase>();
+                var providerLoader = MockRepository.GenerateMock<ConfigProviderLoader>();
                 providerLoader.Stub(x => x.Load()).Return(providerData);
 
                 var providerManager = new ProviderManager(providerLoader);
@@ -42,13 +42,13 @@ namespace CommonProvider.Tests
             public void Should_throw_exception_when_provider_loader_is_null()
             {
                 var providerDesccriptors = new List<IProviderDescriptor>();
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var providerData = MockRepository.GenerateMock<IProviderData>();
                 providerData.Stub(x => x.ProviderDescriptors).Return(providerDesccriptors);
                 providerData.Stub(x => x.Settings).Return(settings);
 
-                ProviderLoaderBase providerLoader = null;
+                ConfigProviderLoader providerLoader = null;
                 new ProviderManager(providerLoader);
             }
 
@@ -57,7 +57,7 @@ namespace CommonProvider.Tests
             {
                 var providerDesccriptors = new List<IProviderDescriptor>();
 
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
                 var fooProviderType = typeof(FooProvider);
@@ -75,7 +75,7 @@ namespace CommonProvider.Tests
                 providerData.Stub(x => x.ProviderDescriptors).Return(providerDesccriptors);
                 providerData.Stub(x => x.Settings).Return(settings);
 
-                var providerLoader = MockRepository.GenerateMock<ProviderLoaderBase>();
+                var providerLoader = MockRepository.GenerateMock<ConfigProviderLoader>();
                 providerLoader.Stub(x => x.Load()).Return(providerData);
 
                 var providerManager = new ProviderManager(providerLoader);

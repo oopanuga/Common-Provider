@@ -1,11 +1,10 @@
-﻿using CommonProvider.Data;
-using System.Text;
+﻿using System.Text;
 
-namespace CommonProvider.Example.Providers
+namespace CommonProvider.Example.SimpleProviders
 {
-    public class NexmoSmsProvider : SmsProviderBase
+    public class NexmoSmsSimpleProvider : ISmsProvider
     {
-        public override string SendSms(Message message)
+        public string SendSms(Message message)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -13,8 +12,8 @@ namespace CommonProvider.Example.Providers
             stringBuilder.AppendLine(string.Format("Text: {0}", message.Text));
             stringBuilder.AppendLine(string.Format("From: {0}", message.Sender));
             stringBuilder.AppendLine(string.Format("To: {0}", message.PhoneNumbers));
-            stringBuilder.AppendLine(string.Format("Endpoint: {0}", this.Settings.Get<string>("Endpoint")));
-            stringBuilder.AppendLine(string.Format("ApiKey: {0}", this.Settings.Get<string>("ApiKey")));
+            stringBuilder.AppendLine(string.Format("Endpoint: {0}", "http://www.nexmo.com/sendsms"));
+            stringBuilder.AppendLine(string.Format("ApiKey: {0}", "54321"));
 
             return stringBuilder.ToString();
         }

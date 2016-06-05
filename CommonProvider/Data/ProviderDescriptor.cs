@@ -26,7 +26,7 @@ namespace CommonProvider.Data
         /// <summary>
         /// Gets the provider's settings.
         /// </summary>
-        ISettings ProviderSettings { get; }
+        IProviderSettings ProviderSettings { get; }
 
         /// <summary>
         /// Gets a value indicating whether or not the provider is enabled.
@@ -51,7 +51,7 @@ namespace CommonProvider.Data
         /// <param name="providerSettings">The provider's settings.</param>
         /// <param name="isEnabled">A value indicating whether or not the provider has been enabled.</param>
         public ProviderDescriptor(string providerName, string providerGroup,
-            Type providerType, ISettings providerSettings, bool isEnabled)
+            Type providerType, IProviderSettings providerSettings, bool isEnabled)
         {
             if (providerType == null)
             {
@@ -87,7 +87,7 @@ namespace CommonProvider.Data
         /// <summary>
         /// Gets a provider's settings.
         /// </summary>
-        public ISettings ProviderSettings { get; private set; }
+        public IProviderSettings ProviderSettings { get; private set; }
 
         /// <summary>
         /// Gets a value indicating if the provider is enabled or not.

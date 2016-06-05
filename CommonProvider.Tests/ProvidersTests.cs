@@ -19,7 +19,7 @@ namespace CommonProvider.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void Should_throw_exception_when_provider_descriptors_is_empty()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var providerDesccriptors = new List<ProviderDescriptor>();
 
@@ -30,7 +30,7 @@ namespace CommonProvider.Tests
             [ExpectedException(typeof(ArgumentException))]
             public void Should_throw_exception_when_provider_descriptors_is_null()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 List<ProviderDescriptor> providerDesccriptors = null;
 
@@ -44,7 +44,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_get_all_enabled_providers_of_the_specified_type()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -85,7 +85,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_return_zero_providers_if_type_not_found()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -114,7 +114,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_get_all_enabled_providers()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -159,7 +159,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_get_all_enabled_providers_in_the_specified_group()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -200,7 +200,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_return_zero_providers_when_providers_with_group_name_not_found()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -246,7 +246,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_get_all_enabled_providers_of_the_specified_type_and_in_the_specified_group()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -288,7 +288,7 @@ namespace CommonProvider.Tests
             [TestCase(typeof(IBarProvider), "FooProviders")]
             public void Should_return_zero_providers_when_providers_of_specified_type_and_with_specified_group_name_doesnt_exist(Type providerType, string groupName)
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -340,7 +340,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_get_an_enabled_provider_with_the_specified_name()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -381,7 +381,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_return_null_when_provider_with_the_specified_name_not_found()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -427,7 +427,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_get_an_enabled_provider_of_the_specified_type_and_with_the_specified_name()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -469,7 +469,7 @@ namespace CommonProvider.Tests
             [TestCase(typeof(IBarProvider), "Foo Provider")]
             public void Should_return_null_provider_when_provider_of_specified_type_and_with_specified_name_doesnt_exist(Type providerType, string providerName)
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -521,7 +521,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_get_an_enabled_provider_with_the_specified_name()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -562,7 +562,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_return_null_when_provider_with_the_specified_name_not_found()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -608,7 +608,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_get_an_enabled_provider_of_the_specified_type_and_with_the_specified_name()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -650,7 +650,7 @@ namespace CommonProvider.Tests
             [TestCase(typeof(IBarProvider), "Foo Provider")]
             public void Should_return_null_provider_when_provider_of_specified_type_and_with_specified_name_doesnt_exist(Type providerType, string providerName)
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";
@@ -694,7 +694,7 @@ namespace CommonProvider.Tests
             [Test]
             public void Should_return_a_count_of_enabled_providers()
             {
-                var settings = MockRepository.GenerateMock<ISettings>();
+                var settings = MockRepository.GenerateMock<IProviderSettings>();
 
                 var fooProviderName = "Foo Provider";
                 var fooProviderGroup = "FooProviders";

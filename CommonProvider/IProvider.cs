@@ -1,4 +1,5 @@
 ﻿using CommonProvider.Data;
+
 namespace CommonProvider
 {
     /// <summary>
@@ -14,7 +15,7 @@ namespace CommonProvider
         /// <summary>
         /// Gets or sets a provider's settings.
         /// </summary>
-        ISettings Settings { get; set; }
+        IProviderSettings Settings { get; set; }
 
         /// <summary>
         /// Gets or sets a provider's group.

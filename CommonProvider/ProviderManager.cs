@@ -18,7 +18,7 @@ namespace CommonProvider
         /// <summary>
         /// Gets all provider wide settings.
         /// </summary>
-        ISettings Settings { get; }
+        IProviderSettings Settings { get; }
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ namespace CommonProvider
         /// Initializes an instance of ProviderManager using the specified provider loader. 
         /// </summary>
         /// <param name="providerLoader">The provider loader to use in loading the providers.</param>
-        public ProviderManager(ProviderLoaderBase providerLoader)
+        public ProviderManager(ConfigProviderLoaderBase providerLoader)
         {
             if (providerLoader == null)
             {
@@ -44,7 +44,15 @@ namespace CommonProvider
             var providerData = providerLoader.Load();
             Providers = new ProviderList(providerData.ProviderDescriptors);
             Settings = providerData.Settings;
-        }     
+        }
+
+        /// <summary>
+        /// Initializes an instance of ProviderManager using the the default provider loader
+        /// which is the ConfigProviderLoader. 
+        /// </summary>
+        public ProviderManager():this(new ConfigProviderLoader())
+        {
+        }  
    
         #endregion
 
@@ -58,7 +66,7 @@ namespace CommonProvider
         /// <summary>
         /// Gets all provider wide settings.
         /// </summary>
-        public ISettings Settings { get; private set; }
+        public IProviderSettings Settings { get; private set; }
 
         #endregion
     }

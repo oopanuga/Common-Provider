@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CommonProvider.Exceptions;
 
 namespace CommonProvider.ProviderLoaders
 {
     /// <summary>
-    /// Represents an implementation of SimpleProviderLoaderBase that loads simple provider 
-    /// types from assemblies. The assemblies are located in the specified directory. The 
-    /// Directory Provider Loader does not require any configuration.
+    /// Represents a class that loads zero config provider types from assemblies.
+    /// The assemblies are located in the specified directory. 
     /// </summary>
-    public class DirectoryProviderLoader : SimpleProviderLoaderBase
+    public class ZeroConfigProviderLoader
     {
         readonly string _assemblyDirectory;
 
         /// <summary>
-        /// Initializes an instance of DirectoryProviderLoader with the specified 
+        /// Initializes an instance of ZeroConfigProviderLoader with the specified 
         /// assembly directory.
         /// </summary>
         /// <param name="assemblyDirectory">The directory where the assemblies 
         /// are located.</param>
-        public DirectoryProviderLoader(string assemblyDirectory)
+        public ZeroConfigProviderLoader(string assemblyDirectory)
         {
             if (string.IsNullOrEmpty(assemblyDirectory))
             {
@@ -36,13 +36,42 @@ namespace CommonProvider.ProviderLoaders
         }
 
         /// <summary>
-        /// Loads simple provider types from assemblies located in the specified directory. 
-        /// All  simple providers loaded using the Directory Provider Loader are enabled by 
-        /// default. Remove a provider's assembly from the specified directory if you choose 
-        /// to not load it.
+        /// Loads zero config provider types.
         /// </summary>
-        /// <returns>The loaded simple provider types.</returns>
-        protected override IEnumerable<Type> PerformLoad()
+        /// <returns>The loaded zero config providers types.</returns>
+        public IEnumerable<Type> Load()
+        {
+            try
+            {
+                var providerTypes = PerformLoad();
+
+                if (providerTypes == null || !providerTypes.Any())
+                {
+                    throw new ProviderLoadException(
+                        "providerTypes not set");
+                }
+
+                return providerTypes;
+            }
+            catch (Exception ex)
+            {
+                if (!(ex is ProviderLoadException))
+                {
+                    throw new ProviderLoadException(
+                        "Error loading providerTypes", ex);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Loads zero config provider types from assemblies located in the specified directory. 
+        /// </summary>
+        /// <returns>The loaded zero config provider types.</returns>
+        private IEnumerable<Type> PerformLoad()
         {
             string[] dllFileNames;
 
@@ -56,7 +85,7 @@ namespace CommonProvider.ProviderLoaders
                 assemblies.Add(assembly);
             }
 
-            Type providerType = typeof(ISimpleProvider);
+            Type providerType = typeof(IZeroConfigProvider);
             ICollection<Type> providerTypes = null;
             foreach (Assembly assembly in assemblies)
             {

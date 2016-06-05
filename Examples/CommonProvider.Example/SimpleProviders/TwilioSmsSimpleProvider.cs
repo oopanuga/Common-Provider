@@ -1,8 +1,8 @@
 ﻿using System.Text;
 
-namespace CommonProvider.Example.SimpleProvider.Lib.Providers
+namespace CommonProvider.Example.SimpleProviders
 {
-    public class TwilioSmsProvider : ISmsProvider
+    public class TwilioSmsSimpleProvider : ISmsProvider
     {
         public string SendSms(Message message)
         {

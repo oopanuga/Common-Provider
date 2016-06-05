@@ -1,6 +1,6 @@
 ﻿namespace CommonProvider.Tests.TestClasses
 {
-    public class FooSimpleProvider : IFooSimpleProvider
+    public class FooZeroConfigProvider : IFooZeroConfigProvider
     {
         public string WriteFoo()
         {
