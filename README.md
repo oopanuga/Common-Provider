@@ -113,3 +113,7 @@ var message = providerManager.Settings.Get<Message>("Message");
 ```
 
 More detailed examples [here](https://github.com/oopanuga/common-provider/tree/master/Examples)
+
+### License
+
+CommonProvider is released under the MIT license.
