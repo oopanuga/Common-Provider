@@ -4,7 +4,7 @@ namespace CommonProvider.Data
 {
     /// <summary>
     /// Represents the base interface for a Provider Descriptor. It holds meta 
-    /// data information regarding a specific loaded provider.
+    /// data information regarding a configured provider.
     /// </summary>
     public interface IProviderDescriptor
     {
@@ -36,7 +36,7 @@ namespace CommonProvider.Data
 
     /// <summary>
     /// Represents the default implementation of IProviderDescriptor. It holds meta 
-    /// data information regarding a specific loaded provider.
+    /// data information regarding a configured provider.
     /// </summary>
     public class ProviderDescriptor : IProviderDescriptor
     {

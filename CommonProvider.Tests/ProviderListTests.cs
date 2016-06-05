@@ -10,9 +10,9 @@ using System.Linq;
 namespace CommonProvider.Tests
 {
     [TestFixture]
-    public class ProvidersTests
+    public class ProviderListTests
     {
-        [Category("Providers.Constructors")]
+        [Category("ProviderList.Constructors")]
         public class Constructors
         {
             [Test]
@@ -38,7 +38,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers.All<T>")]
+        [Category("ProviderList.All<T>")]
         public class All_Generic
         {
             [Test]
@@ -108,7 +108,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers.All")]
+        [Category("ProviderList.All")]
         public class All
         {
             [Test]
@@ -153,7 +153,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers.ByGroup")]
+        [Category("ProviderList.ByGroup")]
         public class ByGroup
         {
             [Test]
@@ -240,7 +240,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers.ByGroup<T>")]
+        [Category("ProviderList.ByGroup<T>")]
         public class ByGroup_Generic
         {
             [Test]
@@ -334,7 +334,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers.ByName")]
+        [Category("ProviderList.ByName")]
         public class ByName
         {
             [Test]
@@ -421,7 +421,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers.ByName<T>")]
+        [Category("ProviderList.ByName<T>")]
         public class ByName_Generic
         {
             [Test]
@@ -515,8 +515,8 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers[\"providerName\"]")]
-        public class ProvidersIndexer
+        [Category("ProviderList[\"providerName\"]")]
+        public class ProviderListIndexer
         {
             [Test]
             public void Should_get_an_enabled_provider_with_the_specified_name()
@@ -602,8 +602,8 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers[\"providerName\" and type]")]
-        public class ProvidersIndexerWithType
+        [Category("ProviderList[\"providerName\" and type]")]
+        public class ProviderListIndexerWithType
         {
             [Test]
             public void Should_get_an_enabled_provider_of_the_specified_type_and_with_the_specified_name()
@@ -688,7 +688,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Providers.Count")]
+        [Category("ProviderList.Count")]
         public class Count
         {
             [Test]

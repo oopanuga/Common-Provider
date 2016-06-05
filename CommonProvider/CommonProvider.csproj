@@ -88,30 +88,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\TypeElementCollection.cs" />
-    <Compile Include="Configuration\ProviderConfigSection.cs" />
-    <Compile Include="Configuration\ProviderElement.cs" />
-    <Compile Include="Configuration\ProviderElementCollection.cs" />
-    <Compile Include="Configuration\ProviderSettingElement.cs" />
-    <Compile Include="Configuration\ProviderSettingElementCollection.cs" />
-    <Compile Include="Configuration\TypeElement.cs" />
+    <Compile Include="ConfigSources\Xml\Configuration\TypeElementCollection.cs" />
+    <Compile Include="ConfigSources\Xml\Configuration\ProviderConfigSection.cs" />
+    <Compile Include="ConfigSources\Xml\Configuration\ProviderElement.cs" />
+    <Compile Include="ConfigSources\Xml\Configuration\ProviderElementCollection.cs" />
+    <Compile Include="ConfigSources\Xml\Configuration\ProviderSettingElement.cs" />
+    <Compile Include="ConfigSources\Xml\Configuration\ProviderSettingElementCollection.cs" />
+    <Compile Include="ConfigSources\Xml\Configuration\TypeElement.cs" />
     <Compile Include="Data\Extensions.cs" />
     <Compile Include="Data\IProviderList.cs" />
     <Compile Include="Data\IZeroConfigProviderList.cs" />
     <Compile Include="Data\ProviderList.cs" />
     <Compile Include="Data\ZeroConfigProviderList.cs" />
+    <Compile Include="Exceptions\LoadProviderTypeException.cs" />
     <Compile Include="GenericMethodInvoker.cs" />
-    <Compile Include="Exceptions\DataParseException.cs" />
+    <Compile Include="Exceptions\ParseDataException.cs" />
     <Compile Include="Exceptions\CreateProviderException.cs" />
-    <Compile Include="Exceptions\ProviderLoadException.cs" />
+    <Compile Include="Exceptions\GetProviderConfigException.cs" />
     <Compile Include="Data\PipeDelimitedDataParser.cs" />
     <Compile Include="IZeroConfigProvider.cs" />
-    <Compile Include="ProviderLoaders\ConfigProviderLoader.cs" />
-    <Compile Include="ProviderLoaders\ZeroConfigProviderLoader.cs">
+    <Compile Include="ConfigSources\Xml\XmlProviderConfigSource.cs" />
+    <Compile Include="ProviderTypeLoader.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ProviderLoaders\ProviderLoaderBase.cs" />
-    <Compile Include="Data\ProviderData.cs" />
+    <Compile Include="ConfigSources\ProviderConfigSource.cs" />
+    <Compile Include="Data\ProviderConfig.cs" />
     <Compile Include="Data\ProviderDescriptor.cs" />
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="ProviderManager.cs" />

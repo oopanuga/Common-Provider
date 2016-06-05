@@ -5,10 +5,10 @@ using System.Linq;
 namespace CommonProvider.Data
 {
     /// <summary>
-    /// Represents the base interface for ProviderData. It holds 
-    /// information regarding all loaded providers.
+    /// Represents the base interface for ProviderConfig. It holds information 
+    /// regarding all configured providers.
     /// </summary>
-    public interface IProviderData
+    public interface IProviderConfig
     {
         /// <summary>
         /// Gets provider wide settings.
@@ -16,25 +16,24 @@ namespace CommonProvider.Data
         IProviderSettings Settings { get; }
 
         /// <summary>
-        /// Gets the meta data of a loaded Provider e.g. Name, Type etc.
+        /// Gets the meta data of a configured Provider e.g. Name, Type etc.
         /// </summary>
         IEnumerable<IProviderDescriptor> ProviderDescriptors { get; }
     }
 
     /// <summary>
     /// Represents the default implementation of IProviderData. It holds information 
-    /// regarding all loaded providers.
+    /// regarding all configured providers.
     /// </summary>
-    public class ProviderData : IProviderData
+    public class ProviderConfig : IProviderConfig
     {
         /// <summary>
-        /// Initializes a new instance of ProviderData with a specified collection 
+        /// Initializes a new instance of ProviderConfig with a specified collection 
         /// of provider descriptors and provider wide settings.
         /// </summary>
-        /// <param name="providerDescriptors">It holds information regarding the 
-        /// loaded providers.</param>
+        /// <param name="providerDescriptors">It holds information regarding the providers.</param>
         /// <param name="settings">The provider wide settings.</param>
-        public ProviderData(
+        public ProviderConfig(
             IEnumerable<IProviderDescriptor> providerDescriptors, IProviderSettings settings)
         {
             if (providerDescriptors == null || !providerDescriptors.Any())
@@ -52,7 +51,7 @@ namespace CommonProvider.Data
         public IProviderSettings Settings { get; private set; }
 
         /// <summary>
-        /// Gets information regarding all loaded providers.
+        /// Gets information regarding all configured providers.
         /// </summary>
         public IEnumerable<IProviderDescriptor> ProviderDescriptors { get; private set; }
     }

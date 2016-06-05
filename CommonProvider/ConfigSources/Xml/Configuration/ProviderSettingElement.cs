@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace CommonProvider.Configuration
+namespace CommonProvider.ConfigSources.Xml.Configuration
 {
     /// <summary>
     /// Represents a Setting configuration element. Could be general or provider specific.

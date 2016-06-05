@@ -10,7 +10,7 @@ namespace CommonProvider.Tests
     [TestFixture]
     public class ProviderSettingsTests
     {
-        [Category("Settings.Constructors")]
+        [Category("ProviderSettings.Constructors")]
         public class Constructors
         {
             [Test]
@@ -49,7 +49,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Settings.Get<T>")]
+        [Category("ProviderSettings.Get<T>")]
         public class Get_Generic
         {
             [TestCase(typeof(string), "website")]
@@ -139,8 +139,8 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Settings[\"settingName\" and type]")]
-        public class SettingsIndexerWithType
+        [Category("ProviderSettings[\"settingName\" and type]")]
+        public class ProviderSettingsIndexerWithType
         {
             [TestCase(typeof(string), "website")]
             [TestCase(typeof(User), "user")]
@@ -228,8 +228,8 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Settings[\"settingName\"]")]
-        public class SettingsIndexer
+        [Category("ProviderSettings[\"settingName\"]")]
+        public class ProviderSettingsIndexer
         {
             [TestCase("website", "http://www.johndoe.com")]
             [TestCase("user", "id:1|name:John Doe")]
@@ -288,7 +288,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Settings.Count")]
+        [Category("ProviderSettings.Count")]
         public class Count
         {
             [Test]
@@ -309,7 +309,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Settings.Contains")]
+        [Category("ProviderSettings.Contains")]
         public class Contains
         {
             [Test]
@@ -347,7 +347,7 @@ namespace CommonProvider.Tests
             }
         }
 
-        [Category("Settings.TryGet<T>")]
+        [Category("ProviderSettings.TryGet<T>")]
         public class TryGet
         {
             [Test]

@@ -1,6 +1,7 @@
 ﻿using CommonProvider.Data;
-using CommonProvider.ProviderLoaders;
 using System;
+using CommonProvider.ConfigSources;
+using CommonProvider.ConfigSources.Xml;
 
 namespace CommonProvider
 {
@@ -11,7 +12,7 @@ namespace CommonProvider
     public interface IProviderManager
     {
         /// <summary>
-        /// Gets the set of loaded providers.
+        /// Gets a list of configured providers.
         /// </summary>
         IProviderList Providers { get; }
 
@@ -31,26 +32,25 @@ namespace CommonProvider
         #region Constructors
 
         /// <summary>
-        /// Initializes an instance of ProviderManager using the specified provider loader. 
+        /// Initializes an instance of ProviderManager using the specified provider config source. 
         /// </summary>
-        /// <param name="providerLoader">The provider loader to use in loading the providers.</param>
-        public ProviderManager(ProviderLoaderBase providerLoader)
+        /// <param name="providerConfigSource">The provider config source to get provider configuration from.</param>
+        public ProviderManager(ProviderConfigSource providerConfigSource)
         {
-            if (providerLoader == null)
+            if (providerConfigSource == null)
             {
-                throw new ArgumentNullException("providerLoader");
+                throw new ArgumentNullException("providerConfigSource");
             }
 
-            var providerData = providerLoader.Load();
-            Providers = new ProviderList(providerData.ProviderDescriptors);
-            Settings = providerData.Settings;
+            var providerConfig = providerConfigSource.GetProviderConfiguration();
+            Providers = new ProviderList(providerConfig.ProviderDescriptors);
+            Settings = providerConfig.Settings;
         }
 
         /// <summary>
-        /// Initializes an instance of ProviderManager using the the default provider loader
-        /// which is the ConfigProviderLoader. 
+        /// Initializes an instance of ProviderManager using the XmlProviderConfigSource
         /// </summary>
-        public ProviderManager():this(new ConfigProviderLoader())
+        public ProviderManager():this(new XmlProviderConfigSource())
         {
         }  
    
@@ -59,7 +59,7 @@ namespace CommonProvider
         #region Properties
 
         /// <summary>
-        /// Gets the set of loaded providers.
+        /// Gets a list of configured providers.
         /// </summary>
         public IProviderList Providers { get; private set; }
 

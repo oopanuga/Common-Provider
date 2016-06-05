@@ -3,33 +3,33 @@
 namespace CommonProvider.Exceptions
 {
     /// <summary>
-    /// Represents an exception thats thrown when providers are loaded.
+    /// Represents an exception thats thrown when getting ProviderConfig.
     /// </summary>
-    public class ProviderLoadException : Exception
+    public class GetProviderConfigException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the ProviderLoadException class.
+        /// Initializes a new instance of the GetProviderConfigException class.
         /// </summary>
-        public ProviderLoadException()
+        public GetProviderConfigException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of ProviderLoadException with a specified error message.
+        /// Initializes a new instance of GetProviderConfigException with a specified error message.
         /// </summary>
         /// <param name="message">A message that describes the error.</param>
-        public ProviderLoadException(string message)
+        public GetProviderConfigException(string message)
             : base(message)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of ProviderLoadException with a specified error message 
+        /// Initializes a new instance of GetProviderConfigException with a specified error message 
         /// and a reference to the inner exception that is the cause of this exception.
         /// </summary>
         /// <param name="message">A message that describes the error.</param>
         /// <param name="innerException">The cause of the current exception.</param>
-        public ProviderLoadException(string message, Exception innerException)
+        public GetProviderConfigException(string message, Exception innerException)
             : base(message, innerException)
         {
         }

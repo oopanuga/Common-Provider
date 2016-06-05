@@ -33,8 +33,9 @@ namespace CommonProvider.Data
         /// <summary>
         /// Initializes a new instance of Providers with the specified provider descriptors.
         /// </summary>
-        /// <param name="providerDescriptors">A collection of provider providerDescriptors 
-        /// that holds information regarding all loaded providers.</param>
+        /// <param name="providerDescriptors">A collection of providerDescriptors that holds 
+        /// information regarding all providers.</param>
+        ///  
         public ProviderList(IEnumerable<IProviderDescriptor> providerDescriptors)
         {
             if (providerDescriptors == null || !providerDescriptors.Any())
@@ -253,7 +254,7 @@ namespace CommonProvider.Data
         /// Initializes a new instance of Providers with the specified provider descriptors. 
         /// </summary>
         /// <param name="providerDescriptors">A collection of provider descriptors that holds 
-        /// information regarding all loaded providers.</param>
+        /// information regarding all configured providers.</param>
         public ProviderList(IEnumerable<IProviderDescriptor> providerDescriptors)
             : base(providerDescriptors)
         {

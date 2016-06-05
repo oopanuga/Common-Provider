@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigProviderLoaderTests.cs" />
-    <Compile Include="ZeroConfigProviderLoaderTests.cs" />
+    <Compile Include="XmlProviderConfigSourceTests.cs" />
+    <Compile Include="ProviderTypeLoaderTests.cs" />
     <Compile Include="ProviderDescriptorTests.cs" />
     <Compile Include="ProviderSettingsTests.cs">
       <SubType>Code</SubType>
@@ -66,7 +66,7 @@
     <Compile Include="TestClasses\IFooProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderManagerTests.cs" />
-    <Compile Include="ProvidersTests.cs" />
+    <Compile Include="ProviderListTests.cs" />
     <Compile Include="TestClasses\BarProvider.cs" />
     <Compile Include="TestClasses\FooProvider.cs" />
   </ItemGroup>

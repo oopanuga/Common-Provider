@@ -1,40 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using CommonProvider.Configuration;
+using CommonProvider.ConfigSources.Xml.Configuration;
 using CommonProvider.Data;
 
-namespace CommonProvider.ProviderLoaders
+namespace CommonProvider.ConfigSources.Xml
 {
     /// <summary>
-    /// Represents an implementation of ProviderLoaderBase that retrieves provider 
-    /// information from a configuration file. The Config Provider Loader requires 
-    /// that information regarding the providers be pre-configured before loading.
+    /// Represents an implementation of ProviderConfigSource that gets provider 
+    /// configuration from an xml configuration file.
     /// </summary>
-    public class ConfigProviderLoader : ProviderLoaderBase
+    public class XmlProviderConfigSource : ProviderConfigSource
     {
         private readonly ProviderConfigSection _configSection;
         private const string SectionName = "commonProvider";
 
         /// <summary>
-        /// Initializes an instance of ConfigProviderLoader
+        /// Initializes an instance of XmlProviderConfigSource
         /// </summary>
-        public ConfigProviderLoader()
+        public XmlProviderConfigSource()
         {
             _configSection = ConfigurationManager.GetSection(SectionName) as ProviderConfigSection;
         }
 
-
-        internal ConfigProviderLoader(ProviderConfigSection configSection)
+        /// <summary>
+        /// Initializes an instance of XmlProviderConfigSource with a ProviderConfigSection
+        /// </summary>
+        /// <param name="configSection">The provider configuration section.</param>
+        internal XmlProviderConfigSource(ProviderConfigSection configSection)
         {
             _configSection = configSection;
         }
 
         /// <summary>
-        /// Loads provider information/meta data from a configuration file.
+        /// Gets provider configuration from an xml configuration file.
         /// </summary>
-        /// <returns>The loaded providers data.</returns>
-        protected override IProviderData PerformLoad()
+        /// <returns>The provider configuration.</returns>
+        protected override IProviderConfig GetProviderConfig()
         {
             if (_configSection == null)
             {
@@ -115,7 +117,7 @@ namespace CommonProvider.ProviderLoaders
                         );
             }
 
-            return new ProviderData(providerDescriptors, generalSettings);
+            return new ProviderConfig(providerDescriptors, generalSettings);
         }
 
         #region Helpers

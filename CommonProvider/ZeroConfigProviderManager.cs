@@ -1,5 +1,4 @@
 ﻿using CommonProvider.Data;
-using CommonProvider.ProviderLoaders;
 
 namespace CommonProvider
 {
@@ -29,7 +28,7 @@ namespace CommonProvider
         /// <param name="assemblyDirectory">The directory to get assemblies from.</param>
         public ZeroConfigProviderManager(string assemblyDirectory)
         {
-            var providerTypes = new ZeroConfigProviderLoader(assemblyDirectory).Load();
+            var providerTypes = new ProviderTypeLoader(assemblyDirectory).Load();
             Providers = new ZeroConfigProviderList(providerTypes);
         }
 
@@ -38,7 +37,7 @@ namespace CommonProvider
         #region Properties
 
         /// <summary>
-        /// Gets the set of loaded providers.
+        /// Gets a list of zero config providers.
         /// </summary>
         public IZeroConfigProviderList Providers { get; private set; }
 

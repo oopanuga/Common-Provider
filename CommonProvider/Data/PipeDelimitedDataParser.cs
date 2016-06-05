@@ -72,7 +72,7 @@ namespace CommonProvider.Data
             }
             catch (Exception ex)
             {
-                throw new DataParseException("Error parsing data", ex);
+                throw new ParseDataException("Error parsing data", ex);
             }
         }
     }

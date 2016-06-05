@@ -1,18 +1,18 @@
-﻿using CommonProvider.ProviderLoaders;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Linq;
-using CommonProvider.Configuration;
+using CommonProvider.ConfigSources.Xml;
+using CommonProvider.ConfigSources.Xml.Configuration;
 
 namespace CommonProvider.Tests
 {
     [TestFixture]
-    public class ConfigProviderLoaderTests
+    public class XmlConfigSourceTests
     {
-        [Category("ConfigProviderLoader.Load")]
-        public class Load
+        [Category("XmlProviderConfigSource.GetProviderConfiguration")]
+        public class GetProviderConfiguration
         {
             [Test]
-            public void Should_load_enabled_providers_from_config()
+            public void Should_get_enabled_providers_from_config()
             {
                 string configSectionName = "commonProvider";
                 var configSection = new ProviderConfigSection();
@@ -64,17 +64,17 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var configProviderLoader = new ConfigProviderLoader(configSection);
-                var providerData = configProviderLoader.Load();
+                var xmlProviderConfigSource = new XmlProviderConfigSource(configSection);
+                var providerConfig = xmlProviderConfigSource.GetProviderConfiguration();
 
-                Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
-                Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(2));
-                Assert.That(providerData.Settings.Count, Is.EqualTo(1));
-                Assert.That(providerData.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
+                Assert.That(providerConfig.ProviderDescriptors, Is.Not.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Count(), Is.EqualTo(2));
+                Assert.That(providerConfig.Settings.Count, Is.EqualTo(1));
+                Assert.That(providerConfig.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
             }
 
             [Test]
-            public void Should_not_load_disabled_providers_from_config()
+            public void Should_not_get_disabled_providers_from_config()
             {
                 string configSectionName = "commonProvider";
                 var configSection = new ProviderConfigSection();
@@ -127,14 +127,14 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var configProviderLoader = new ConfigProviderLoader(configSection);
-                var providerData = configProviderLoader.Load();
+                var xmlProviderConfigSource = new XmlProviderConfigSource(configSection);
+                var providerConfig = xmlProviderConfigSource.GetProviderConfiguration();
 
-                Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
-                Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(1));
-                Assert.That(providerData.ProviderDescriptors.First().ProviderName, Is.EqualTo("Bar"));
-                Assert.That(providerData.Settings.Count, Is.EqualTo(1));
-                Assert.That(providerData.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(1));
+                Assert.That(providerConfig.ProviderDescriptors, Is.Not.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Count(), Is.EqualTo(1));
+                Assert.That(providerConfig.ProviderDescriptors.First().ProviderName, Is.EqualTo("Bar"));
+                Assert.That(providerConfig.Settings.Count, Is.EqualTo(1));
+                Assert.That(providerConfig.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(1));
             }
 
             [Test]
@@ -190,13 +190,13 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var configProviderLoader = new ConfigProviderLoader(configSection);
-                var providerData = configProviderLoader.Load();
+                var xmlProviderConfigSource = new XmlProviderConfigSource(configSection);
+                var providerConfig = xmlProviderConfigSource.GetProviderConfiguration();
 
-                Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
-                Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(2));
-                Assert.That(providerData.Settings.Count, Is.EqualTo(1));
-                Assert.That(providerData.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
+                Assert.That(providerConfig.ProviderDescriptors, Is.Not.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Count(), Is.EqualTo(2));
+                Assert.That(providerConfig.Settings.Count, Is.EqualTo(1));
+                Assert.That(providerConfig.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
             }
 
             [Test]
@@ -252,17 +252,17 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var configProviderLoader = new ConfigProviderLoader(configSection);
-                var providerData = configProviderLoader.Load();
+                var xmlProviderConfigSource = new XmlProviderConfigSource(configSection);
+                var providerConfig = xmlProviderConfigSource.GetProviderConfiguration();
 
-                Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
-                Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(2));
-                Assert.That(providerData.Settings.Count, Is.EqualTo(1));
-                Assert.That(providerData.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
+                Assert.That(providerConfig.ProviderDescriptors, Is.Not.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Count(), Is.EqualTo(2));
+                Assert.That(providerConfig.Settings.Count, Is.EqualTo(1));
+                Assert.That(providerConfig.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
             }
 
             [Test]
-            public void Should_load_enabled_providers_when_types_section_not_defined()
+            public void Should_get_enabled_providers_when_types_section_not_defined()
             {
                 string configSectionName = "commonProvider";
                 var configSection = new ProviderConfigSection();
@@ -300,17 +300,17 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var configProviderLoader = new ConfigProviderLoader(configSection);
-                var providerData = configProviderLoader.Load();
+                var xmlProviderConfigSource = new XmlProviderConfigSource(configSection);
+                var providerConfig = xmlProviderConfigSource.GetProviderConfiguration();
 
-                Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
-                Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(2));
-                Assert.That(providerData.Settings.Count, Is.EqualTo(1));
-                Assert.That(providerData.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
+                Assert.That(providerConfig.ProviderDescriptors, Is.Not.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Count(), Is.EqualTo(2));
+                Assert.That(providerConfig.Settings.Count, Is.EqualTo(1));
+                Assert.That(providerConfig.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
             }
 
             [Test]
-            public void Should_load_enabled_providers_when_global_settings_section_not_defined()
+            public void Should_get_enabled_providers_when_global_settings_section_not_defined()
             {
                 string configSectionName = "commonProvider";
                 var configSection = new ProviderConfigSection();
@@ -342,17 +342,17 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var configProviderLoader = new ConfigProviderLoader(configSection);
-                var providerData = configProviderLoader.Load();
+                var xmlProviderConfigSource = new XmlProviderConfigSource(configSection);
+                var providerConfig = xmlProviderConfigSource.GetProviderConfiguration();
 
-                Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
-                Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(2));
-                Assert.That(providerData.Settings, Is.Null);
-                Assert.That(providerData.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
+                Assert.That(providerConfig.ProviderDescriptors, Is.Not.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Count(), Is.EqualTo(2));
+                Assert.That(providerConfig.Settings, Is.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Sum(x => x.ProviderSettings.Count), Is.EqualTo(2));
             }
 
             [Test]
-            public void Should_load_enabled_providers_when_provider_settings_not_defined()
+            public void Should_get_enabled_providers_when_provider_settings_not_defined()
             {
                 string configSectionName = "commonProvider";
                 var configSection = new ProviderConfigSection();
@@ -383,13 +383,13 @@ namespace CommonProvider.Tests
                 barProvider.Settings.Add(providerSettingElement);
                 configSection.Providers.Add(barProvider);
 
-                var configProviderLoader = new ConfigProviderLoader(configSection);
-                var providerData = configProviderLoader.Load();
+                var xmlProviderConfigSource = new XmlProviderConfigSource(configSection);
+                var providerConfig = xmlProviderConfigSource.GetProviderConfiguration();
 
-                Assert.That(providerData.ProviderDescriptors, Is.Not.Null);
-                Assert.That(providerData.ProviderDescriptors.Count(), Is.EqualTo(2));
-                Assert.That(providerData.Settings, Is.Null);
-                Assert.That(providerData.ProviderDescriptors.Where(x => x.ProviderSettings != null)
+                Assert.That(providerConfig.ProviderDescriptors, Is.Not.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Count(), Is.EqualTo(2));
+                Assert.That(providerConfig.Settings, Is.Null);
+                Assert.That(providerConfig.ProviderDescriptors.Where(x => x.ProviderSettings != null)
                     .Sum(x => x.ProviderSettings.Count), Is.EqualTo(1));
             }
         }
