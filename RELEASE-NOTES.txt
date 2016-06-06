@@ -13,8 +13,8 @@ Version 3.0.0
 - Renamed ProviderLoaderBase to ProviderConfigSource and moved to different namespace
 - Renamed ConfigProviderLoader to XmlProviderConfigSource and moved to different namespace
 - Added default constructor to ProviderManager class that internally uses an XmlProviderConfigSource
-- Applied changes to Tests and Example project accordingly
 - Moved ProviderConfigSection to different namespace
+- Applied changes to Tests and Example project accordingly
 - Added MIT License
 - Did general refactoring
 
