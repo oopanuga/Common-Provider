@@ -57,7 +57,7 @@ public class NexmoSmsProvider : SmsProviderBase
 }
 ```
 
-Config setup for CommonProvider (not required for ISimpleProvider implementation)
+Config setup for CommonProvider (not required for IZeroConfigProvider)
 ```xml
 <configSections>
     <section name="commonProvider" type="CommonProvider.ConfigSources.Xml.Configuration.ProviderConfigSection, CommonProvider"/>
