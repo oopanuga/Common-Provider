@@ -5,13 +5,14 @@ CommonProvider is a simple library that gives you an easy and consistent way of 
 ### Key Features
 Some key features of CommonProvider are,
 
-1. Simple and consistent way of accessing providers.
-2. Get provider meta data/settings from xml config source. Can be extended to support other config sources.
-3. Support for zero configuration providers.
-4. Dependency resolution via IOC containers e.g. Unity, Castle etc.
-5. Support for simple and complex (serialized) provider settings. 
+1. Easy and consistent way of accessing providers.
+2. Support for configuration based providers (IProvider). Configuration is loaded from a config source.
+3. Support for zero configuration providers (IZeroConfigProvider). Configuration not required.
+4. Define provider specific settings or global settings (does not apply to IZeroConfigProvider)
+5. Provider settings could be simple or complex (serialized). 
 6. Use data parsers to parse/deserialize complex settings.
-7. Various extension points.
+7. Dependency resolution via IOC containers e.g. Unity, Castle etc.
+8. Various extension points.
 
 ### Key Extension Points
 CommonProvider has various extension points but the key ones are,
