@@ -78,7 +78,7 @@ namespace CommonProvider.Data
         {
             if (settings == null || settings.Count == 0)
             {
-                throw new ArgumentException("settings not set");
+                throw new ArgumentException("settings not set.");
             }
 
             _settings = settings;
@@ -152,19 +152,19 @@ namespace CommonProvider.Data
         {
             if (string.IsNullOrEmpty(settingName))
             {
-                throw new ArgumentException("setting name not set");
+                throw new ArgumentException("settingName not set.");
             }
 
             if (!Contains(settingName))
             {
-                throw new ArgumentException("setting name does not exist");
+                throw new ArgumentException("settingName does not exist.");
             }
 
             Type type = typeof(T);
 
             if (type.IsInterface)
             {
-                throw new InvalidOperationException("Type cannot be an interface");
+                throw new InvalidOperationException("Type cannot be an interface.");
             }
 
             var setting = _settings[settingName];
@@ -182,7 +182,7 @@ namespace CommonProvider.Data
                     {
                         throw new InvalidOperationException(
                             "Could not parse data with the default PipedDataParser," +
-                            "please ensure that you set dataParserType and try again",
+                            "please ensure that you set dataParserType and try again.",
                             ex);
                     }
                 }

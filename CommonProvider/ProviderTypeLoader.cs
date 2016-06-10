@@ -24,12 +24,12 @@ namespace CommonProvider
         {
             if (string.IsNullOrEmpty(assemblyDirectory))
             {
-                throw new ArgumentException("assemblyDirectory not set");
+                throw new ArgumentException("assemblyDirectory not set.");
             }
 
             if (!System.IO.Directory.Exists(assemblyDirectory))
             {
-                throw new ArgumentException("assemblyDirectory does not exist");
+                throw new ArgumentException("assemblyDirectory does not exist.");
             }
 
             _assemblyDirectory = assemblyDirectory;
@@ -92,7 +92,7 @@ namespace CommonProvider
             }
             catch (Exception ex)
             {
-                throw new LoadProviderTypeException("Error loading provider types", ex);
+                throw new LoadProviderTypeException("Error loading provider types.", ex);
             }
         }
     }

@@ -27,7 +27,7 @@ namespace CommonProvider.ConfigSources
 
                 if (providerConfig == null)
                 {
-                    throw new GetProviderConfigException("No provider config returned");
+                    throw new GetProviderConfigException("No provider config found.");
                 }
 
                 return providerConfig;
@@ -37,7 +37,7 @@ namespace CommonProvider.ConfigSources
                 if (!(ex is GetProviderConfigException))
                 {
                     throw new GetProviderConfigException(
-                        "Error getting provider config", ex);
+                        "Error getting provider config.", ex);
                 }
                 else
                 {

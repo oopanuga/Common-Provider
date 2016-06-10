@@ -41,8 +41,7 @@ namespace CommonProvider.ConfigSources.Xml
             if (_configSection == null)
             {
                 throw new ConfigurationErrorsException(
-                    string.Format("Config section {0} not defined",
-                    SectionName));
+                    string.Format("Config section {0} not defined.", SectionName));
             }
 
             var providerDescriptors = new List<IProviderDescriptor>();
@@ -102,8 +101,8 @@ namespace CommonProvider.ConfigSources.Xml
                     {
                         dataParserType = GetDataParserType(_configSection,
                             providerElement.Settings.DataParserType);
-
                     }
+
                     providerSetting = new Data.ProviderSettings(ps, dataParserType);
                 }
 
@@ -124,45 +123,39 @@ namespace CommonProvider.ConfigSources.Xml
 
         private string GetDataParserType(ProviderConfigSection configSection, string dataParserType)
         {
-            string dataParserElementType = GetObjectType(configSection, dataParserType);
+            var errorMessage = "The data parser type is not valid.";
+            var dataParserElementType = GetObjectType(configSection, dataParserType);
             if (!string.IsNullOrEmpty(dataParserElementType))
             {
                 if (Type.GetType(dataParserElementType) == null)
                 {
-                    throw new ConfigurationErrorsException(
-                        "The Type defined for the ComplexDataTypeParser is not valid.");
+                    throw new ConfigurationErrorsException(errorMessage);
                 }
-                else
-                {
-                    return dataParserElementType;
-                }
+                return dataParserElementType;
             }
             else
             {
                 if (Type.GetType(dataParserType) == null)
                 {
-                    throw new ConfigurationErrorsException(
-                        "No Type found for the ComplexDataTypeParser.");
+                    throw new ConfigurationErrorsException(errorMessage);
                 }
-                else
-                {
-                    return dataParserType;
-                }
+                return dataParserType;
             }
         }
 
         private Type GetProviderType(ProviderConfigSection configSection, ProviderElement providerElement)
         {
-            Type providerType = null;
-            string providerElementType = GetObjectType(configSection, providerElement.Type);
+            var errorMessage = "The Type defined for Provider '{0}' is not valid.";
+            Type providerType;
+
+            var providerElementType = GetObjectType(configSection, providerElement.Type);
             if (!string.IsNullOrEmpty(providerElementType))
             {
                 providerType = Type.GetType(providerElementType);
                 if (providerType == null)
                 {
                     throw new ConfigurationErrorsException(
-                        string.Format("The Type defined for Provider '{0}' is not valid.",
-                        providerElement.Name));
+                        string.Format(errorMessage, providerElement.Name));
                 }
             }
             else
@@ -171,8 +164,7 @@ namespace CommonProvider.ConfigSources.Xml
                 if (providerType == null)
                 {
                     throw new ConfigurationErrorsException(
-                        string.Format("No Type found for Provider '{0}'.",
-                        providerElement.Name));
+                        string.Format(errorMessage, providerElement.Name));
                 }
             }
             return providerType;

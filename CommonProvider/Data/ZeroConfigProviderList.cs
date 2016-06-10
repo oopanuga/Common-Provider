@@ -134,7 +134,7 @@ namespace CommonProvider.Data
                         "Could not create instance of type {0}. If you've got a Provider " +
                         "implementation that exposes constructor arguments then please consider " +
                         "using any of the existing dependency resolvers or write your " +
-                        "own implementation(see documentation for details)",
+                        "own implementation.",
                         providerType.Name));
                 }
 
@@ -145,7 +145,7 @@ namespace CommonProvider.Data
                 if (!(ex is CreateProviderException))
                 {
                     throw new CreateProviderException(
-                        "Error creating provider",
+                        "Error creating provider.",
                         ex);
                 }
                 else

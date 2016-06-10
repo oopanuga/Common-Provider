@@ -38,7 +38,7 @@ namespace CommonProvider.Data
         {
             if (providerDescriptors == null || !providerDescriptors.Any())
             {
-                throw new ArgumentException("providerDescriptors not set");
+                throw new ArgumentException("providerDescriptors not set.");
             }
 
             Settings = settings;
