@@ -113,7 +113,7 @@ namespace CommonProvider.Data
                 if (!type.IsAssignableFrom(providerType))
                 {
                     throw new CreateProviderException(
-                                            string.Format("{0} should be assignable from {1}",
+                                            string.Format("{0} should be assignable from {1}.",
                                             type.Name,
                                             providerType.Name
                                             ));

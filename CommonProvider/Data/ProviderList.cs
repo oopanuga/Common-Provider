@@ -186,7 +186,7 @@ namespace CommonProvider.Data
                 if (!type.IsAssignableFrom(providerDescriptor.ProviderType))
                 {
                     throw new CreateProviderException(
-                                            string.Format("{0} should be assignable from {1}",
+                                            string.Format("{0} should be assignable from {1}.",
                                             type.Name,
                                             providerDescriptor.ProviderType.Name
                                             ));
@@ -223,7 +223,7 @@ namespace CommonProvider.Data
                 if (!(ex is CreateProviderException))
                 {
                     throw new CreateProviderException(
-                        "Error creating provider",
+                        "Error creating provider.",
                         ex);
                 }
                 else
